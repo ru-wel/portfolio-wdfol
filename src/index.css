@@ -43,6 +43,14 @@
 html {
   /* font-size: 62.5%; 1 rem = 10px  */
   font-family: 'Px Grotesk';
+  color: #000000;
+}
+
+#root{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 img {
@@ -50,8 +58,13 @@ img {
   max-width: 100%;
 }
 
+li {
+  list-style-type: none;
+}
+
 a {
   text-decoration: none;
+  color: inherit
 }
 
 @media (prefers-reduced-motion: no-preference) {

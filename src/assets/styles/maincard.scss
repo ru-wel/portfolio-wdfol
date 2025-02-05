@@ -1,3 +1,40 @@
+.maincard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #000;
+  width: 40%;
+  height: 80%;
+
+  .profile{
+    img{
+
+    }
+  }
+
+  .logo{
+    img{
+
+    }
+  }
+
+  .social-links{
+    display: flex;
+  }
+
+  .buttons{
+    display: flex;
+    gap: 10px;
+
+    button{
+      background: none;
+      border: none;
+      font-family: 'PX Sans Nouveaux';
+    }
+  }
+}
+
 h1{
   font-family: 'PX Sans Nouveaux';
 }
