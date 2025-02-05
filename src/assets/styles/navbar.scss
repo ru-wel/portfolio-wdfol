@@ -4,3 +4,12 @@ nav{
   display: flex;
   flex-direction: column;
 }
+
+nav div svg {
+  transition: fill 0.2s ease;
+  fill: #1A1A1A;
+}
+
+nav div svg:hover {
+  fill: #2CCF76;
+}
