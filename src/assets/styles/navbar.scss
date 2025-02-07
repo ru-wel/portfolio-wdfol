@@ -5,14 +5,15 @@ nav {
   flex-direction: column;
   margin-right: 8px;
   position: relative;
-  left: 0px;
-  top: 15px;
+  left: 10px;
+  // top: 15px;
   float: left;
   width: 72px;
   z-index: 100;
   text-align: center;
   opacity: 1;
   visibility: visible;
+  background-color: #F3EDEA;
 
   div {
     border: 1px solid black;

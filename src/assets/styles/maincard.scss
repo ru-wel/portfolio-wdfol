@@ -4,8 +4,9 @@
   align-items: center;
   justify-content: center;
   border: 3px solid #000;
-  width: 40%;
+  width: 30%;
   height: 80%;
+  box-shadow: -15px -17px 7.7px rgba(0, 0, 0, 0.25);
 
   .profile{
     img{
@@ -31,6 +32,41 @@
       background: none;
       border: none;
       font-family: 'PX Sans Nouveaux';
+    }
+  }
+}
+
+.profilecard{
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  // justify-content: center;
+  border: 3px solid #000;
+  border-left: none;
+  width: 40%;
+  height: 75%;
+  padding: 1rem;
+
+  .home{
+    border: 1px solid #000;
+  }
+
+  .projects{
+    border: 1px solid #000;
+
+    .projectcards{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      
+      .card{
+        border: 1px solid #000;
+        
+        img{
+          width: 100%;
+          object-fit: cover;
+        }
+      }
     }
   }
 }

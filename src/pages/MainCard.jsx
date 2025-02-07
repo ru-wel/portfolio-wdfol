@@ -3,6 +3,8 @@ import "../assets/styles/maincard.scss";
 
 const MainCard = () => {
   return (
+    <>
+
     <div className='maincard'>
 
       <div className='profile'>
@@ -31,6 +33,35 @@ const MainCard = () => {
       </div>
       
     </div>
+
+    <div className="profilecard">
+
+      <div className="home">
+        <h2>HOME</h2>
+        <p>I am a passionate learner who loves exploring technology—leading to my interest in both frontend and backend development and dream of becoming a full-stack developer. I am eager to keep learning and growing to achieve my goals and make a difference in the tech world.</p>
+      </div>
+
+      <div className="projects">
+        <h2>FEATURED PROJECTS</h2>
+
+        <div className="projectcards">
+
+          <div className="card">
+            <img src="images/rcgs.jpg" alt="" width={'279px'} height={'173px'}/>
+            <h3>MNHS LMS</h3>
+            <p>A Learning Managemenht System (LMS) proposed for a local high school in Mexico, Pampanga.</p>
+          </div>
+
+          <div className="card">
+            <img src="images/rcgs.jpg" alt="" width={'279px'} height={'173px'}/>
+            <h3>MNHS LMS</h3>
+            <p>A Learning Managemenht System (LMS) proposed for a local high school in Mexico, Pampanga.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    </>
   )
 }
 

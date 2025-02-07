@@ -1,10 +1,11 @@
 import Nav from './Nav';
+import MainCard from './MainCard';
 
 const About = () => {
     return(
         <>
         <Nav />
-        <p>THIS IS THE ABOUT PAGE</p>
+        <MainCard />
         </>
     );
 }
