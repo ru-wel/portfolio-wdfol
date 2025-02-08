@@ -1,3 +1,5 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css');
+
 nav {
   font-family: 'Px Grotesk';
   text-transform: uppercase;
@@ -8,7 +10,7 @@ nav {
   left: 10px;
   // top: 15px;
   float: left;
-  width: 72px;
+  width: 85px;
   z-index: 100;
   text-align: center;
   opacity: 1;
@@ -21,9 +23,11 @@ nav {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 1rem;
     
-    svg {
+    i{
       transition: fill 0.2s ease;
+      font-size: 30px;
     }
 
     a {
@@ -31,7 +35,7 @@ nav {
     }
 
     &:hover {
-      svg {
+      i {
         fill: #2CCF76;
       }
 
