@@ -1,3 +1,5 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css');
+
 .maincard{
   display: flex;
   flex-direction: column;
@@ -22,6 +24,18 @@
 
   .social-links{
     display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin: 0.3rem 0;
+
+    .social-icon {
+      font-size: 1.8rem;
+      transition: color 0.3s;
+
+      &:hover {
+        color: #2CCF76;
+      }
+    }
   }
 
   .buttons{
