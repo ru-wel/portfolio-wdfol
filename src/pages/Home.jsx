@@ -1,37 +1,27 @@
-import { useState, useEffect } from 'react';
-import reactLogo from '../assets/react.svg';
-import viteLogo from '/vite.svg';
 import Nav from './Nav';
 import MainCard from './MainCard';
+import "../assets/styles/home.scss";
 
 const Home = () => {
-    const [count, setCount] = useState(0)
-    return(
-        <>
-        <Nav />
-        <MainCard />
-      {/* <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
-      </>
-    );
+  const projects = [
+    {
+      title: 'MNHS LMS',
+      description: 'A Learning Management System (LMS) proposal for a local high school in Manila, Philippines.',
+      image: '/api/placeholder/400/300'
+    },
+    {
+      title: 'Caution Coffee',
+      description: 'A website created to showcase Caution Coffee, a cafe and premium supply store located in Angeles City, Philippines',
+      image: '/api/placeholder/400/300'
+    }
+  ];
+
+  return(
+    <>
+    <Nav />
+    <MainCard />
+    </>
+  );
 }
 
 export default Home;

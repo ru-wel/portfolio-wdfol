@@ -47,13 +47,13 @@ const MainCard = () => {
         <div className="projectcards">
 
           <div className="card">
-            <img src="images/rcgs.jpg" alt="" width={'279px'} height={'173px'}/>
+            <a href="#"><img src="images/rcgs.jpg" alt="" width={'279px'} height={'173px'}/></a>
             <h3>MNHS LMS</h3>
             <p>A Learning Managemenht System (LMS) proposed for a local high school in Mexico, Pampanga.</p>
           </div>
 
           <div className="card">
-            <img src="images/rcgs.jpg" alt="" width={'279px'} height={'173px'}/>
+            <a href="#"><img src="images/rcgs.jpg" alt="" width={'279px'} height={'173px'}/></a>
             <h3>MNHS LMS</h3>
             <p>A Learning Managemenht System (LMS) proposed for a local high school in Mexico, Pampanga.</p>
           </div>
