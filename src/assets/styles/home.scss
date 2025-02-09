@@ -1,0 +1,288 @@
+.container {
+  height: 100vh;          
+  display: flex;          
+  justify-content: center;
+  align-items: center;    
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    gap: 0.5rem;
+    height: auto;
+    min-height: 80vh;
+    padding: 2rem 1rem;
+  }
+
+  .profile-card {
+    text-align: center;
+    border: 3px solid #000;
+    width: 30%;
+    height: 80%;
+    box-shadow: -15px -17px 7.7px rgba(51, 28, 88, 0.30);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  
+    .profile-image {
+      object-fit: cover;
+      margin-bottom: 10px;
+      width: 100%;
+      border-bottom: 1px solid #000;
+    }
+  
+    .logo-badge {
+      width: 140px;
+      height: 140px;
+      background: #F3EDEA;
+      border-radius: 50%;
+      position: relative;
+      bottom: 40px;
+      margin: -40px auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border: 3px solid #000;
+  
+      img {
+        width: 30%;
+        height: 30%;
+      }
+    }
+  
+    .profile-name {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 10px 0 5px;
+    }
+  
+    .profile-title {
+      font-size: 1rem;
+    }
+  
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      margin: 0.3rem 0;
+  
+      .social-icon {
+        font-size: 1.8rem;
+        transition: color 0.3s;
+  
+        &:hover {
+          color: #2CCF76;
+        }
+      }
+    }
+  
+    .button-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 100%;
+      margin-top: auto;
+      border-top: 1px solid #000;
+  
+      .profile-button {
+        padding: 15px;
+        font-size: 14px;
+        background-color: #F3EDEA;
+        transition: all 0.2s;
+  
+        a {
+          font-size: 0.7rem;
+          text-transform: uppercase;
+          font-family: 'PX Sans Nouveaux';
+          font-weight: normal;
+        }
+  
+        i {
+          font-size: 1.3rem;
+          margin-left: 0.5rem;
+        }
+  
+        &:hover {
+          transform: scale(1.01);
+          background-color: #2CCF76;
+          box-shadow: 4px 4px 10px black;
+        }
+      }
+    }
+  }
+  
+  .home-card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border: 3px solid #000;
+    border-left: none;
+    width: 40%;
+    height: 75%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 1rem;
+  
+    .window {
+      border-radius: 2px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  
+      .window-header {
+        padding: 8px 12px;
+        border-bottom: 1px solid #000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+  
+        .window-title {
+          font-size: 1rem;
+        }
+  
+        .window-controls {
+          display: flex;
+          gap: 4px;
+  
+          .control-dot {
+            width: 12px;
+            height: 12px;
+            border: 1px solid #000;
+            border-radius: 50%;
+          }
+  
+          .control-dot:last-child {
+            background: #000;
+          }
+        }
+      }
+  
+      .window-content {
+        padding: 15px;
+        line-height: 1.6;
+      }
+    }
+  
+    .projects {
+      position: relative;
+      // bottom: 25px;
+      width: 100%;
+  
+      h2 {
+        font-family: 'PX Sans Nouveaux';
+        font-size: 1rem;
+        font-weight: normal;
+        width: 100%;
+        border-top: 1px solid #000;
+        padding: 0.7rem;
+      }
+  
+      .projectcards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        padding: 0 1rem;
+  
+        .card {
+          border: 1px solid #000;
+          transition: all 0.2s;
+  
+          &:hover {
+            box-shadow: 4px 4px black;
+            transform: scale(1.01);
+          }
+  
+          img {
+            width: 100%;
+            object-fit: cover;
+          }
+  
+          h3 {
+            font-weight: 400;
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+            padding: 0.5rem 0.3rem;
+          }
+  
+          p {
+            padding: 0.3rem;
+            font-weight: 300;
+          }
+        }
+      }
+    }
+  }
+  
+  h1 {
+    font-family: 'PX Sans Nouveaux';
+  }
+  
+  @media (max-width: 1024px) {
+    .profile-card {
+      width: 70%;
+      height: auto;
+    }
+  
+    .home-card {
+      width: 70%;
+      height: auto;
+      border-left: 3px solid #000;
+    }
+  
+    .profile-name {
+      font-size: 1.3rem;
+    }
+  
+    .profile-title {
+      font-size: 0.9rem;
+    }
+  
+    .social-links{
+      margin-bottom: 1.5rem !important;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .profile-card,
+    .home-card {
+      width: 80%;
+      height: auto;
+      border-left: 3px solid #000;
+      border-right: 3px solid #000;
+    }
+  
+    .button-container {
+      grid-template-columns: 1fr;
+    }
+  
+    .projects {
+      position: relative;
+      bottom: 0;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .profile-card,
+    .home-card {
+      width: 100%;
+      border: 3px solid #000;
+    }
+  
+    .profile-name {
+      font-size: 1.1rem;
+    }
+  
+    .profile-title {
+      font-size: 0.8rem;
+    }
+  
+    .social-links {
+      gap: 0.5rem;
+  
+      .social-icon {
+        font-size: 1.5rem;
+      }
+    }
+  
+    .button-container {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+

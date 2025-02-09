@@ -3,8 +3,8 @@ import Nav from "./Nav";
 const Contact = () => {
     return(
         <>
-            <Nav />
-            <p>THIS IS THE CONTACT PAGE</p>
+          <Nav />
+          <p>THIS IS THE CONTACT PAGE</p>
         </>
     );
 }

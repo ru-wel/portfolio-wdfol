@@ -2,10 +2,10 @@ import Nav from './Nav';
 
 const Projects = () => {
     return(
-        <>
-        <Nav />
-        <p>THIS IS THE PROJECTS PAGE</p>
-        </>
+      <>
+      <Nav />
+      <p>THIS IS THE PROJECTS PAGE</p>
+      </>
     );
 }
 
