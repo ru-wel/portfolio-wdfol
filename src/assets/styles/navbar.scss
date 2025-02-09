@@ -15,36 +15,66 @@ nav {
   visibility: visible;
   background-color: #F3EDEA;
 
-  div {
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    
-    i{
-      transition: fill 0.2s ease;
-      font-size: 25px;
-    }
+  .nav-logo{
+    display: none;
+  }
 
-    a {
-      transition: color 0.2s ease;
-      font-size: 14px;
-    }
-
-    &:hover {
-      i {
-        fill: #2CCF76;
+  .nav-items{
+    div {
+      border: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      
+      i{
+        transition: fill 0.2s ease;
+        font-size: 25px;
       }
-
+  
       a {
-        color: #2CCF76;
+        transition: color 0.2s ease;
+        font-size: 14px;
+      }
+  
+      &:hover {
+        i {
+          fill: #2CCF76;
+        }
+  
+        a {
+          color: #2CCF76;
+        }
       }
     }
   }
 
+  // tablet / mobile nav styles
+
   @media (max-width: 1024px) {
+    width: 100%;
     flex-direction: row;
+    justify-content: space-around;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    
+    .nav-logo{
+      display: block;
+    }
+
+    .nav-items{
+      display: flex;
+      flex-direction: row;
+
+      div{
+        max-width: 75px;
+        max-height: 83px;
+      }
+    }
   }
 }

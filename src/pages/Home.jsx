@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-
 import Nav from './Nav';
+
 import "../assets/styles/home.scss";
 import projects from '../assets/projects';
 
@@ -14,7 +14,7 @@ const Home = () => {
         
         <div className="logo-badge">
           <Link to={"/"}>
-            <img src="images/wel-logo-final.png" alt="Logo" width={'100px'} height={'100px'}/>
+            <img src="images/wel-logo-final.png" alt="RCGS Logo" width={'100px'} height={'100px'}/>
           </Link>
         </div>
         

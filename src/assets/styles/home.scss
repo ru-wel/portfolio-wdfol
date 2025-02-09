@@ -4,14 +4,6 @@
   justify-content: center;
   align-items: center;    
 
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    gap: 0.5rem;
-    height: auto;
-    min-height: 80vh;
-    padding: 2rem 1rem;
-  }
-
   .profile-card {
     text-align: center;
     border: 3px solid #000;
@@ -258,8 +250,17 @@
   h1 {
     font-family: 'PX Sans Nouveaux';
   }
+
+  // responsive styles
   
   @media (max-width: 1024px) {
+    flex-direction: column;
+    gap: 0.5rem;
+    height: auto;
+    min-height: 80vh;
+    padding: 2rem 1rem;
+    padding-top: 150px;
+
     .profile-card {
       width: 70%;
       height: auto;
@@ -330,6 +331,8 @@
       grid-template-columns: 1fr;
     }
   } 
+
+  // scrollbar styles
 
   ::-webkit-scrollbar {
     width: 5px;
