@@ -6,22 +6,16 @@ import projects from '../assets/projects';
 
 const Home = () => {
 
-  // const mainCardStyle = {
-  //   height: '100vh',
-  //   display: 'flex',
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  // };
-
   return(
     <div className='container'>
       <Nav />
-      {/* <MainCard /> */}
       <div className="profile-card">
         <img src="images/rcgs.jpg" alt="Profile" className="profile-image" width={'485px'} height={'350px'}/>
         
         <div className="logo-badge">
-          <img src="images/wel-logo-final.png" alt="Logo" width={'100px'} height={'100px'}/>
+          <Link to={"/"}>
+            <img src="images/wel-logo-final.png" alt="Logo" width={'100px'} height={'100px'}/>
+          </Link>
         </div>
         
         <h1 className="profile-name">Reuel Christian Sundiam</h1>
@@ -60,7 +54,7 @@ const Home = () => {
                 </div>
             </div>
             <div className="window-content">
-                <p>I am a passionate learner who loves exploring technology—leading to my interest in both frontend and backend development and dream of becoming a full-stack developer. I am eager to keep learning and growing to achieve my goals and make a difference in the tech world.</p>
+                <p>I am a passionate learner who loves exploring technology—leading to my interest in both <span>frontend</span> and <span>backend development</span> and dream of becoming a full-stack developer. I am eager to keep learning and growing to achieve my goals and make a difference in the tech world.</p>
             </div>
         </div>
 
@@ -73,7 +67,7 @@ const Home = () => {
                 <Link to={`/project/${project.id}`}>
                   <img src={project.image} alt={project.title} width="279px" height="173px" />
                 </Link>
-                <Link to={`/project/${project.id}`}>
+                <Link to={`/project/${project.id}`} className='project-link'>
                   <h3>{project.title}</h3>
                 </Link>
                 <p>{project.description}</p>

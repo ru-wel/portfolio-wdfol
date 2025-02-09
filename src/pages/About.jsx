@@ -4,7 +4,7 @@ const About = () => {
     return(
       <>
       <Nav />
-      <MainCard />
+      <p>THIS IS THE ABOUT PAGE</p>
       </>
     );
 }
