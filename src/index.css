@@ -2,28 +2,28 @@
 
 @font-face {
   font-family: 'Px Grotesk', sans-serif;
-  src: url('../public/fonts/Px-Grotesk-Regular.ttf')  format("ttf");
+  src: url('./fonts/Px-Grotesk-Regular.ttf')  format("ttf");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Px Grotesk', sans-serif;
-  src: url('../public/fonts/Px-Grotesk-Light.ttf') format("ttf");
+  src: url('./fonts/Px-Grotesk-Light.ttf') format("ttf");
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Px Grotesk', sans-serif;
-  src: url('../public/fonts/Px-Grotesk-Bolf.ttf') format("ttf");
+  src: url('./fonts/Px-Grotesk-Bolf.ttf') format("ttf");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'PX Sans Nouveaux', sans-serif;
-  src: url('../public/fonts/px_sans_nouveaux.ttf') format("ttf");
+  src: url('./fonts/px_sans_nouveaux.ttf') format("ttf");
   font-weight: 400;
   font-style: normal;
 }
