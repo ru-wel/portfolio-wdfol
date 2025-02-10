@@ -4,122 +4,122 @@
   justify-content: center;
   align-items: center;    
 
-  .profile-card {
-    text-align: center;
-    border: 3px solid #000;
-    width: 30%;
-    height: 80%;
-    box-shadow: -15px -17px 7.7px rgba(51, 28, 88, 0.30);
-    display: flex;
-    flex-direction: column;
-    position: relative;
+  // .profile-card {
+  //   text-align: center;
+  //   border: 3px solid #000;
+  //   width: 30%;
+  //   height: 80%;
+  //   box-shadow: -15px -17px 7.7px rgba(51, 28, 88, 0.30);
+  //   display: flex;
+  //   flex-direction: column;
+  //   position: relative;
   
-    .profile-image {
-      object-fit: cover;
-      margin-bottom: 10px;
-      width: 100%;
-      height: 40vh;
-      max-height: 350px;
-      min-height: 200px;
-      border-bottom: 1px solid #000;
-    }
+  //   .profile-image {
+  //     object-fit: cover;
+  //     margin-bottom: 10px;
+  //     width: 100%;
+  //     height: 40vh;
+  //     max-height: 350px;
+  //     min-height: 200px;
+  //     border-bottom: 1px solid #000;
+  //   }
   
-    .logo-badge {
-      // width: 140px;
-      // height: 140px;
-      width: clamp(80px, 14vh, 140px);
-      height: clamp(80px, 14vh, 140px);
-      background: #F3EDEA;
-      border-radius: 50%;
-      position: relative;
-      // bottom: 40px;
-      // margin: -40px auto 10px;
-      bottom: clamp(20px, 5vh, 40px);
-      margin: calc(-1 * clamp(20px, 5vh, 40px)) auto 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-      border: 3px solid #000;
+  //   .logo-badge {
+  //     // width: 140px;
+  //     // height: 140px;
+  //     width: clamp(80px, 14vh, 140px);
+  //     height: clamp(80px, 14vh, 140px);
+  //     background: #F3EDEA;
+  //     border-radius: 50%;
+  //     position: relative;
+  //     // bottom: 40px;
+  //     // margin: -40px auto 10px;
+  //     bottom: clamp(20px, 5vh, 40px);
+  //     margin: calc(-1 * clamp(20px, 5vh, 40px)) auto 10px;
+  //     display: flex;
+  //     align-items: center;
+  //     justify-content: center;
+  //     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  //     border: 3px solid #000;
   
-      img {
-        width: clamp(60px, 11vh, 140px);
-        height: clamp(60px, 11vh, 140px);
-      }
-    }
+  //     img {
+  //       width: clamp(60px, 11vh, 140px);
+  //       height: clamp(60px, 11vh, 140px);
+  //     }
+  //   }
   
-    .profile-name {
-      // font-size: 1.5rem;
-      font-size: clamp(1.3rem, 1.3vw, 1.5rem);
-      font-weight: bold;
-      margin: 10px 0 5px;
-      transition: color 0.2s ease-in-out, font-size 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+  //   .profile-name {
+  //     // font-size: 1.5rem;
+  //     font-size: clamp(1.3rem, 1.3vw, 1.5rem);
+  //     font-weight: bold;
+  //     margin: 10px 0 5px;
+  //     transition: color 0.2s ease-in-out, font-size 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
 
-      &:hover {
-        color: #2CCF76;
-        font-size: 1.6rem;
-      }
-    }
+  //     &:hover {
+  //       color: #2CCF76;
+  //       font-size: 1.6rem;
+  //     }
+  //   }
   
-    .profile-title {
-      font-size: 1rem;
-      transition: color 0.2s ease-in-out, font-size 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+  //   .profile-title {
+  //     font-size: 1rem;
+  //     transition: color 0.2s ease-in-out, font-size 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
 
-      &:hover {
-        color: #331C58;
-        font-size: 1.1rem;
-      }
-    }
+  //     &:hover {
+  //       color: #331C58;
+  //       font-size: 1.1rem;
+  //     }
+  //   }
   
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 0.8rem;
-      margin: 0.3rem 0;
+  //   .social-links {
+  //     display: flex;
+  //     justify-content: center;
+  //     gap: 0.8rem;
+  //     margin: 0.3rem 0;
   
-      .social-icon {
-        font-size: 1.8rem;
-        transition: color 0.3s;
+  //     .social-icon {
+  //       font-size: 1.8rem;
+  //       transition: color 0.3s;
   
-        &:hover {
-          color: #2CCF76;
-        }
-      }
-    }
+  //       &:hover {
+  //         color: #2CCF76;
+  //       }
+  //     }
+  //   }
   
-    .button-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      width: 100%;
-      margin-top: auto;
-      border-top: 1px solid #000;
+  //   .button-container {
+  //     display: grid;
+  //     grid-template-columns: 1fr 1fr;
+  //     width: 100%;
+  //     margin-top: auto;
+  //     border-top: 1px solid #000;
   
-      .profile-button {
-        padding: 15px;
-        font-size: 14px;
-        background-color: #F3EDEA;
-        transition: all 0.2s;
+  //     .profile-button {
+  //       padding: 15px;
+  //       font-size: 14px;
+  //       background-color: #F3EDEA;
+  //       transition: all 0.2s;
   
-        a {
-          font-size: 0.7rem;
-          text-transform: uppercase;
-          font-family: 'PX Sans Nouveaux';
-          font-weight: normal;
-        }
+  //       a {
+  //         font-size: 0.7rem;
+  //         text-transform: uppercase;
+  //         font-family: 'PX Sans Nouveaux';
+  //         font-weight: normal;
+  //       }
   
-        i {
-          font-size: 1.3rem;
-          margin-left: 0.5rem;
-        }
+  //       i {
+  //         font-size: 1.3rem;
+  //         margin-left: 0.5rem;
+  //       }
   
-        &:hover {
-          transform: scale(1.01);
-          background-color: #2CCF76;
-          box-shadow: 4px 4px 10px black;
-        }
-      }
-    }
-  }
+  //       &:hover {
+  //         transform: scale(1.01);
+  //         background-color: #2CCF76;
+  //         box-shadow: 4px 4px 10px black;
+  //       }
+  //     }
+  //   }
+  // }
   
   .home-card {
     display: flex;
@@ -132,10 +132,18 @@
     overflow-y: auto;
     overflow-x: hidden;
     padding: 1rem;
+    opacity: 0;
+    animation: fadeInUp 0.7s ease-out forwards;
   
     .window {
+      border: 1px solid #000;
       border-radius: 2px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s;
+  
+      &:hover {
+        box-shadow: 4px 4px black;
+        transform: scale(1.01);
+      }
   
       .window-header {
         padding: 8px 12px;
@@ -246,6 +254,19 @@
       }
     }
   }
+
+  // animation styles
+
+  // @keyframes fadeInUp {
+  //   from {
+  //     opacity: 0;
+  //     transform: translateY(50px);
+  //   }
+  //   to {
+  //     opacity: 1;
+  //     transform: translateY(0);
+  //   }
+  // }
   
   h1 {
     font-family: 'PX Sans Nouveaux';

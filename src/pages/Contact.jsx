@@ -1,5 +1,8 @@
 import { useRef } from 'react';
+
 import emailjs from '@emailjs/browser';
+import ProfileCard from './ProfileCard.jsx';
+import "../assets/styles/contact.scss";
 
 import Nav from "./Nav";
 
@@ -26,19 +29,22 @@ const Contact = () => {
   };
 
   return(
-    <>
+    <div className="container">
       <Nav />
-      <p>THIS IS THE CONTACT PAGE</p>
-      <form ref={form} onSubmit={sendEmail}>
-        <label>Name</label>
-        <input type="text" name="name" required/>
-        <label>Email</label>
-        <input type="email" name="email" required/>
-        <label>Message</label>
-        <textarea name="message" rows={'5'} required/>
-        <input type="submit" value="Send" />
-      </form>
-    </>
+      <ProfileCard />
+
+      <div className="contact-card">
+        <form ref={form} onSubmit={sendEmail}>
+          <label>Name</label>
+          <input type="text" name="name" required/>
+          <label>Email</label>
+          <input type="email" name="email" required/>
+          <label>Message</label>
+          <textarea name="message" rows={'5'} required/>
+          <input type="submit" value="Send" />
+        </form>
+      </div>
+    </div>
   );
 }
 

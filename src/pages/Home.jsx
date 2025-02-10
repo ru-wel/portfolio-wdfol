@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import Nav from './Nav';
 
+import Nav from './Nav';
+import ProfileCard from './ProfileCard.jsx';
 import "../assets/styles/home.scss";
 import projects from '../assets/projects';
 
@@ -9,7 +10,8 @@ const Home = () => {
   return(
     <div className='container'>
       <Nav />
-      <div className="profile-card">
+      <ProfileCard />
+      {/* <div className="profile-card">
         <img src="images/rcgs.jpg" alt="Profile" className="profile-image" width={'485px'} height={'350px'}/>
         
         <div className="logo-badge">
@@ -40,7 +42,7 @@ const Home = () => {
             <i className="fa-solid fa-id-card-clip"></i>
           </button>
         </div>
-      </div>
+      </div> */}
 
       <div className="home-card">
 
@@ -54,7 +56,8 @@ const Home = () => {
                 </div>
             </div>
             <div className="window-content">
-                <p>I am a passionate learner who loves exploring technology—leading to my interest in both <span>frontend</span> and <span>backend development</span> and dream of becoming a full-stack developer. I am eager to keep learning and growing to achieve my goals and make a difference in the tech world.</p>
+              <p><span>Hello! I’m Reuel Christian Sundiam.</span></p>
+              <p>I am a passionate learner who loves exploring technology—leading to my interest in both <span>frontend</span> and <span>backend development</span> and dream of becoming a full-stack developer. I am eager to keep learning and growing to achieve my goals and make a difference in the tech world.</p>
             </div>
         </div>
 

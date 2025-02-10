@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
-import Nav from './Nav';
 
+import Nav from './Nav';
+import ProfileCard from './ProfileCard.jsx';
 import "../assets/styles/home.scss";
 
 const About = () => {
   return(
     <div className='container'>
       <Nav />
-      <div className="profile-card">
+      <ProfileCard />
+      {/* <div className="profile-card">
         <img src="images/rcgs.jpg" alt="Profile" className="profile-image" width={'485px'} height={'350px'}/>
         
         <div className="logo-badge">
@@ -38,7 +40,7 @@ const About = () => {
             <i className="fa-solid fa-id-card-clip"></i>
           </button>
         </div>
-      </div>
+      </div> */}
 
       <div className="home-card">
 
