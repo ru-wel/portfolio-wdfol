@@ -23,7 +23,7 @@
 
 @font-face {
   font-family: 'PX Sans Nouveaux', sans-serif;
-  src: url('./fonts/px_sans_nouveaux.ttf') format("ttf");
+  src: url('./fonts/px_sans_nouveaux.ttf') format("truetype");
   font-weight: 400;
   font-style: normal;
 }
