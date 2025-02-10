@@ -187,6 +187,7 @@
       position: relative;
       // bottom: 25px;
       width: 100%;
+      margin-top: 1.3rem;
   
       h2 {
         font-family: 'PX Sans Nouveaux';
@@ -197,7 +198,7 @@
         padding: 0.7rem;
       }
   
-      .projectcards {
+      .projectcards{
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 1rem;

@@ -1,69 +1,82 @@
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 import Nav from './Nav';
 import ProfileCard from './ProfileCard.jsx';
-import "../assets/styles/home.scss";
+import "../assets/styles/about.scss";
+import skills from '../assets/skills';
+import cerficates from '../assets/certificates';
+import ProgressProvider from "./ProgressProvider";
+import certifcates from "../assets/certificates.js";
 
 const About = () => {
   return(
+    <>
     <div className='container'>
       <Nav />
       <ProfileCard />
-      {/* <div className="profile-card">
-        <img src="images/rcgs.jpg" alt="Profile" className="profile-image" width={'485px'} height={'350px'}/>
-        
-        <div className="logo-badge">
-          <Link to={"/"}>
-            <img src="images/wel-logo-final.png" alt="RCGS Logo" width={'100px'} height={'100px'}/>
-          </Link>
-        </div>
-        
-        <h1 className="profile-name">Reuel Christian Sundiam</h1>
-        <p className="profile-title">Backend | Frontend Developer</p>
-        
-        <div className="social-links">
-          <a href="https://www.facebook.com/reuelchristian.sundiam" target='_blank' className="social-icon"><i className="fab fa-facebook"></i></a>
-          <a href="https://github.com/ru-wel" target='_blank' className="social-icon"><i className="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/reuel-christian-sundiam" target='_blank' className="social-icon"><i className="fab fa-linkedin"></i></a>
-          <a href="mailto:reuelchristian.sundiam04@gmail.com" target='_blank' className="social-icon"><i className="fas fa-envelope"></i></a>
-        </div>
-        
-        <div className="button-container">
-          <button className="profile-button">
-            <a href="RCGS-PORTFOLIO.pdf" download>Download Resume</a>
-            <i className="fa-solid fa-cloud-arrow-down"></i>
-          </button>
-          <button className="profile-button">
-            <Link to={"/contact"}>
-              Contact Me
-            </Link>
-            <i className="fa-solid fa-id-card-clip"></i>
-          </button>
-        </div>
-      </div> */}
 
       <div className="home-card">
 
         <div className="window">
-            <div className="window-header">
-                <h1 className="window-title">About</h1>
-                <div className="window-controls">
-                    <div className="control-dot"></div>
-                    <div className="control-dot"></div>
-                    <div className="control-dot"></div>
-                </div>
-            </div>
-            <div className="window-content">
-              <h2>Personal Bio</h2>
-              <p>A brief overview of your background, skills, and interests.</p>
-            </div>
+          <div className="window-header">
+              <h1 className="window-title">About</h1>
+              <div className="window-controls">
+                  <div className="control-dot"></div>
+                  <div className="control-dot"></div>
+                  <div className="control-dot"></div>
+              </div>
+          </div>
+          <div className="window-content">
+            <h2>Personal Bio</h2>
+            <p>A brief overview of your background, skills, and interests. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          </div>
         </div>
 
-        <div className="projects">
+        <div className="projects skills">
           <h2>Technical Skills</h2>
+
+          <div className="technical-skills">
+            {skills.map((category, index) => (
+              <div key={index} className="skills-section">
+                <h3 className="category-title">{category.category}</h3>
+                <div className="skills-container">
+                  {category.skills.map((skill, idx) => (
+                    <div key={idx} className="skill">
+                      <ProgressProvider valueStart={0} valueEnd={skill.progress}>
+                        {value => <CircularProgressbar value={value} text={`${value}%`} />}
+                      </ProgressProvider>
+                      <p>{skill.name}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
+        
+      </div>
+
+    </div>
+
+    <div className="certificate-container">
+      <h1>Certifications and Trainings</h1>
+      <div className="certificate-cards">
+        {certifcates.map((certificate, index) => 
+          <div className="card" key={index}>
+            <div className="certificate-logo">
+              <img src={certificate.image} alt={certificate.company} width="150px" height="150px" />
+            </div>
+            <h3>{certificate.company}</h3>
+            <p>{certificate.title}</p>
+          </div>
+        )}
       </div>
     </div>
+    </>
   );
 }
 

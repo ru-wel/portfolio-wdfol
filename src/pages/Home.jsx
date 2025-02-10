@@ -62,7 +62,7 @@ const Home = () => {
         </div>
 
         <div className="projects">
-          <h2>FEATURED PROJECTS</h2>
+          <h2>Featured Projects</h2>
 
           <div className="projectcards">
             {projects.slice(0,2).map((project, index) => 
