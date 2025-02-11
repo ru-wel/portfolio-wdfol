@@ -50,6 +50,14 @@ nav {
     }
   }
 
+  .hamburger {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
   // tablet / mobile nav styles
 
   @media (max-width: 1024px) {
@@ -75,6 +83,45 @@ nav {
         max-width: 75px;
         max-height: 83px;
       }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nav-items {
+      visibility: hidden;
+      flex-direction: row;
+      justify-content: center;
+      position: absolute;
+      padding: 0.5rem;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #F3EDEA;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-1rem);
+      max-height: 0;
+      padding: 0 0.5rem;
+
+      transition: 
+        opacity 0.4s ease,
+        visibility 0.4s ease,
+        transform 0.4s ease,
+        max-height 0.4s ease,
+        padding 0.4s ease;
+    }
+  
+    .nav-items.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      max-height: 500px;
+      padding: 1rem 0.5rem;
+    }
+  
+    .hamburger {
+      display: block;
     }
   }
 }

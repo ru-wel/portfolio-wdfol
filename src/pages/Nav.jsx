@@ -1,7 +1,11 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import "../assets/styles/navbar.scss";
 
 const Nav = () => {
+
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return(
     <nav>
@@ -9,7 +13,11 @@ const Nav = () => {
         <Link to="/" aria-label="Go to Home Page"><img src="images/wel-logo-final.png" alt="RCGS Logo" width={'81px'} height={'90px'}/></Link>
       </div>
 
-      <div className='nav-items'>
+      <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+        ☰
+      </button>
+
+      <div className={`nav-items ${menuOpen ? "open" : ""}`}>
         <div>
           <Link to="/" aria-label="Go to Home Page">
             <i className="fa-solid fa-house"></i>
