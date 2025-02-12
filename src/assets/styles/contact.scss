@@ -70,11 +70,11 @@
     font-family: 'Px Grotesk';
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    color: #000;
   }
 
   .button-confirm:hover {
     background-color: var(--input-focus);
-    color: white;
     box-shadow: 3px 3px var(--input-focus);
   }
 
