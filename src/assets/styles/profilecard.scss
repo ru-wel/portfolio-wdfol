@@ -23,15 +23,11 @@
   }
 
   .logo-badge {
-    // width: 140px;
-    // height: 140px;
     width: clamp(80px, 14vh, 140px);
     height: clamp(80px, 14vh, 140px);
     background: #F3EDEA;
     border-radius: 50%;
     position: relative;
-    // bottom: 40px;
-    // margin: -40px auto 10px;
     bottom: clamp(20px, 5vh, 40px);
     margin: calc(-1 * clamp(20px, 5vh, 40px)) auto 10px;
     display: flex;

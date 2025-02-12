@@ -1,5 +1,3 @@
-// import { Link } from 'react-router-dom';
-
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
@@ -7,7 +5,6 @@ import Nav from './Nav';
 import ProfileCard from './ProfileCard.jsx';
 import "../assets/styles/about.scss";
 import skills from '../assets/skills';
-import cerficates from '../assets/certificates';
 import ProgressProvider from "./ProgressProvider";
 import certifcates from "../assets/certificates.js";
 

@@ -13,10 +13,8 @@ const Nav = () => {
         <Link to="/" aria-label="Go to Home Page"><img src="images/wel-logo-final.png" alt="RCGS Logo" width={'81px'} height={'90px'}/></Link>
       </div>
 
-      <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
-        ☰
-      </button>
-
+      <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
+        
       <div className={`nav-items ${menuOpen ? "open" : ""}`}>
         <div>
           <Link to="/" aria-label="Go to Home Page">
