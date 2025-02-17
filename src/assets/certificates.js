@@ -45,7 +45,7 @@ const certifcates = [
     image: 'images/fcc.png',
     action: 'View',
     url: 'https://www.freecodecamp.org/certification/ruwel/javascript-algorithms-and-data-structures',
-    isDownload: true,
+    isDownload: false,
   },
   {
     company: 'HubSpot',

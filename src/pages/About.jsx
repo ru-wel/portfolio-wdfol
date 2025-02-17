@@ -12,17 +12,15 @@ const About = () => {
 
   const handleAction = (certificate) => {
     if (certificate.url) {
-      // If it's a downloadable file (assuming it's a direct link to a PDF or other file)
       if (certificate.isDownload) {
         const link = document.createElement('a');
         link.href = certificate.url;
-        link.setAttribute('download', ''); // Forces download
+        link.setAttribute('download', '');
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
       } else {
-        // Otherwise, redirect to the URL
-        window.open(certificate.url, '_blank'); // Opens in new tab
+        window.open(certificate.url, '_blank');
       }
     } else {
       console.warn('No URL provided for this action');
