@@ -6,7 +6,7 @@ import projects from '../assets/projects';
 const Projects = () => {
     return(
       <>
-      <Nav />
+      <Nav logo={'images/wel-logo-final.png'}/>
       <div className="projects">
         <h2>Featured Projects</h2>
 

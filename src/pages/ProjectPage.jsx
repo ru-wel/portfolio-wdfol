@@ -11,8 +11,7 @@ const ProjectPage = () => {
 
   return (
     <div className='container'>
-      <Nav />
-      
+      <Nav logo={project.logo}/>
       <div className="projectmain-card">
         <img src={project.image} alt="" width={'537px'} height={'450px'} className='project-image'/>
 
@@ -60,6 +59,13 @@ const ProjectPage = () => {
         </div>
       </div>
     </div>
+
+    // <div>Project Page {project.id}
+    //   <img src={project.image} alt="" width={'537px'} height={'450px'} className='project-image'/>
+    //   <h3>{project.title}</h3>
+    //   <p>{project.description}</p>
+    //   <p>{project.description2}</p>
+    // </div>
   )
 }
 

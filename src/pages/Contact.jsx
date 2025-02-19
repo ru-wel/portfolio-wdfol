@@ -32,7 +32,7 @@ const Contact = () => {
 
   return(
     <div className="container">
-      <Nav />
+      <Nav logo={'images/wel-logo-final.png'}/>
       <ProfileCard />
 
       <div className="home-card">

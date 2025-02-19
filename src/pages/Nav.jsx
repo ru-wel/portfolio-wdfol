@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 
 import "../assets/styles/navbar.scss";
 
-const Nav = () => {
+const Nav = ({logo}) => {
 
   const [menuOpen, setMenuOpen] = useState(false);
 
   return(
     <nav>
       <div className='nav-logo'>
-        <Link to="/" aria-label="Go to Home Page"><img src="images/wel-logo-final.png" alt="RCGS Logo" width={'81px'} height={'90px'}/></Link>
+        <Link to="/" aria-label="Go to Home Page"><img src={logo} alt="RCGS Logo" width={'81px'} height={'90px'}/></Link>
       </div>
 
       <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</button>

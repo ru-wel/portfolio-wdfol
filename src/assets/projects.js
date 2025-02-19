@@ -11,6 +11,7 @@ const projects = [
       'https://mnhs-lms.onrender.com/login',
     ],
     roles: ['Backend', 'Client'],
+    logo: '/images/wel-logo-final.png'
   },
   {
     id: 2,
