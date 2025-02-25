@@ -22,9 +22,10 @@ const projects = [
     image: '/images/caution-home.png',
     links: [
       'https://github.com/ru-wel/CAUTION-COFFEE',
-      '',
+      'https://caution-coffee.onrender.com/',
     ],
     roles: ['Backend', 'School'],
+    logo: '/images/wel-logo-final.png',
   },
   {
     id: 3,
@@ -35,9 +36,10 @@ const projects = [
     image: '/images/area-home.png',
     links: [
       'https://github.com/ru-wel/AREA-DWEBIMAN',
-      '',
+      'https://areahomes.hstn.me/',
     ],
     roles: ['Fullstack', 'School'],
+    logo: '/images/wel-logo-final.png',
   },
   {
     id: 4,
@@ -48,9 +50,10 @@ const projects = [
     image: '/images/prgm-home.png',
     links: [
       'https://github.com/ru-wel/PRGM-INTROWEB',
-      '',
+      'https://ru-wel.github.io/PRGM-INTROWEB/',
     ],
     roles: ['Frontend', 'School'],
+    logo: '/images/wel-logo-final.png',
   }
 ];
 
