@@ -11,7 +11,17 @@ const projects = [
       'https://mnhs-lms.onrender.com/login',
     ],
     roles: ['Backend', 'Client'],
-    logo: '/images/wel-logo-final.png'
+    logo: '/images/wel-logo-final.png',
+    screenshots: [
+      '/images/mnhs-dashboard.png',
+      '/images/mnhs-admin-users.jpeg',
+      '/images/mnhs-admin-modules.jpeg',
+    ],
+    // features: [
+    //   'feature1',
+    //   'feature2',
+    //   'feature3',
+    // ],
   },
   {
     id: 2,
@@ -26,6 +36,11 @@ const projects = [
     ],
     roles: ['Backend', 'School'],
     logo: '/images/wel-logo-final.png',
+    screenshots: [
+      '/images/caution-products.png',
+      '/images/caution-login.png',
+      '/images/caution-cart.png',
+    ],
   },
   {
     id: 3,
@@ -40,6 +55,11 @@ const projects = [
     ],
     roles: ['Fullstack', 'School'],
     logo: '/images/wel-logo-final.png',
+    screenshots: [
+      '/images/area-one-rental.png',
+      '/images/area-dashboard-properties.png',
+      '/images/area-dashboard-properties2.png',
+    ],
   },
   {
     id: 4,
@@ -54,6 +74,11 @@ const projects = [
     ],
     roles: ['Frontend', 'School'],
     logo: '/images/wel-logo-final.png',
+    screenshots: [
+      '/images/prgm-html.png',
+      '/images/prgm-about.png',
+      '/images/prgm-contact.png',
+    ],
   }
 ];
 

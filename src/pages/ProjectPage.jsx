@@ -5,6 +5,11 @@ import Nav from './Nav';
 import "../assets/styles/projectpage.scss";
 import projects from '../assets/projects'
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
+
 const ProjectPage = () => {
   const { id } = useParams();
   const project = projects.find((p) => p.id === Number(id));
@@ -38,7 +43,7 @@ const ProjectPage = () => {
 
       <div className="projectpage-card">
 
-        <div className="window">
+        {/* <div className="window">
             <div className="window-header">
                 <h1 className="window-title">Project {project.id}</h1>
                 <div className="window-controls">
@@ -52,11 +57,38 @@ const ProjectPage = () => {
               <p>I am a passionate learner who loves exploring technology—leading to my interest in both <span>frontend</span> and <span>backend development</span> and dream of becoming a full-stack developer. I am eager to keep learning and growing to achieve my goals and make a difference in the tech world.</p>
               <p><span className='tagline'>— "Good Things Come One Line At A Time"</span></p>
             </div>
-        </div>
+        </div> */}
 
-        <div className="projects">
+        <h2>UNDER CONSTRUCTION</h2>
 
+        <div className="window">
+
+          <div className="project-showcase">
+
+            <div className="carousel-container">
+              <Swiper navigation={true} modules={[Navigation]} className="swiper-container">
+                {project.screenshots.map((image, index) => (
+                  <SwiperSlide key={index} className="slide">
+                    <img src={image} alt={`Screenshot ${index + 1}`} className="carousel-image" />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+
+            {/* <div className="description">
+              <h2 className="title">{project.title}</h2>
+              <p className="text">{project.description}</p>
+              <ul className="features">
+                {project.features.map((feature, index) => (
+                  <li key={index} className="feature-item">✔ {feature}</li>
+                ))}
+              </ul>
+            </div> */}
+
+            </div>
         </div>
+        
+
       </div>
     </div>
 

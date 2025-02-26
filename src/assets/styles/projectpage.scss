@@ -126,4 +126,80 @@
       border: 3px solid #000;
     }
   }
+
+  // .projectpage-card{
+
+  //   .project-showcase {
+  //     display: flex;
+  //     align-items: center;
+  //     justify-content: center;
+  //     gap: 2rem;
+  //     padding: 2rem;
+  //     background-color: #1a1a2e;
+  //     color: #f3f3f3;
+    
+  //     @media (max-width: 768px) {
+  //       flex-direction: column;
+  //     }
+    
+  //     .carousel-container {
+  //       width: 50%;
+  //       max-width: 600px;
+    
+  //       @media (max-width: 768px) {
+  //         width: 100%;
+  //       }
+    
+  //       .swiper-container {
+  //         border-radius: 10px;
+  //         overflow: hidden;
+  //         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  //       }
+    
+  //       .carousel-image {
+  //         width: 100%;
+  //         border-radius: 10px;
+  //         transition: transform 0.3s ease-in-out;
+    
+  //         &:hover {
+  //           transform: scale(1.02);
+  //         }
+  //       }
+  //     }
+    
+  //     .description {
+  //       width: 50%;
+    
+  //       @media (max-width: 768px) {
+  //         width: 100%;
+  //         text-align: center;
+  //       }
+    
+  //       .title {
+  //         font-size: 2rem;
+  //         font-weight: bold;
+  //         margin-bottom: 1rem;
+  //       }
+    
+  //       .text {
+  //         font-size: 1rem;
+  //         color: #d1d1d1;
+  //         line-height: 1.5;
+  //         margin-bottom: 1rem;
+  //       }
+    
+  //       .features {
+  //         list-style: none;
+  //         padding: 0;
+    
+  //         .feature-item {
+  //           font-size: 1rem;
+  //           margin-bottom: 0.5rem;
+  //           color: #2ccf76;
+  //           font-weight: bold;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 }
