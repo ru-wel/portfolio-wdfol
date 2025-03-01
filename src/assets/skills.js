@@ -30,6 +30,15 @@ const skills = [
       { name: "Firebase", progress: 50 },
     ]
   },
+  {
+    category: "Tools",
+    skills: [
+      { name: "WordPress", progress: 75 },
+      { name: "Figma", progress: 60 },
+      { name: "Canva", progress: 80 },
+      { name: "Microsoft Office", progress: 80 },
+    ]
+  },
 ]
 
 export default skills;

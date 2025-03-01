@@ -5,10 +5,7 @@ import Nav from './Nav';
 import "../assets/styles/projectpage.scss";
 import projects from '../assets/projects'
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
+import FeatureCarousel from './FeatureCarousel';
 
 const ProjectPage = () => {
   const { id } = useParams();
@@ -27,10 +24,14 @@ const ProjectPage = () => {
               <p>{project.roles[0]}</p>
               <p>{project.roles[1]} Project</p>
             </div>
-
             <div className="social-links">
-              <a href={project.links[0]} target='_blank' className="social-icon"><i className="fab fa-github"></i></a>
-              <a href={project.links[1]} target='_blank' className="social-icon"><i class="fa-solid fa-globe"></i></a>
+              {project.links?.map((link, index) => (
+                link && (
+                  <a key={index} href={link} target="_blank" className="social-icon" rel="noopener noreferrer">
+                    {index === 0 ? <i className="fa-solid fa-globe"></i> : <i className="fab fa-github"></i>}
+                  </a>
+                )
+              ))}
             </div>
           </div>
 
@@ -43,61 +44,25 @@ const ProjectPage = () => {
 
       <div className="projectpage-card">
 
-        {/* <div className="window">
-            <div className="window-header">
-                <h1 className="window-title">Project {project.id}</h1>
-                <div className="window-controls">
-                    <div className="control-dot"></div>
-                    <div className="control-dot"></div>
-                    <div className="control-dot"></div>
-                </div>
-            </div>
-            <div className="window-content">
-              <p><span>Hello! I’m Reuel Christian Sundiam.</span></p>
-              <p>I am a passionate learner who loves exploring technology—leading to my interest in both <span>frontend</span> and <span>backend development</span> and dream of becoming a full-stack developer. I am eager to keep learning and growing to achieve my goals and make a difference in the tech world.</p>
-              <p><span className='tagline'>— "Good Things Come One Line At A Time"</span></p>
-            </div>
-        </div> */}
-
-        <h2>UNDER CONSTRUCTION</h2>
-
         <div className="window">
 
-          <div className="project-showcase">
+          <div className="window-header">
+            <h1 className="window-title">Project Features</h1>
+            <div className="window-controls">
+                <div className="control-dot"></div>
+                <div className="control-dot"></div>
+                <div className="control-dot"></div>
+            </div>
+          </div>
 
-            <div className="carousel-container">
-              <Swiper navigation={true} modules={[Navigation]} className="swiper-container">
-                {project.screenshots.map((image, index) => (
-                  <SwiperSlide key={index} className="slide">
-                    <img src={image} alt={`Screenshot ${index + 1}`} className="carousel-image" />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+            <div className="features-section">
+              <FeatureCarousel features={project} />
             </div>
 
-            {/* <div className="description">
-              <h2 className="title">{project.title}</h2>
-              <p className="text">{project.description}</p>
-              <ul className="features">
-                {project.features.map((feature, index) => (
-                  <li key={index} className="feature-item">✔ {feature}</li>
-                ))}
-              </ul>
-            </div> */}
-
-            </div>
         </div>
         
-
       </div>
     </div>
-
-    // <div>Project Page {project.id}
-    //   <img src={project.image} alt="" width={'537px'} height={'450px'} className='project-image'/>
-    //   <h3>{project.title}</h3>
-    //   <p>{project.description}</p>
-    //   <p>{project.description2}</p>
-    // </div>
   )
 }
 
