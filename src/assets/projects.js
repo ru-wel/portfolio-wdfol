@@ -91,7 +91,7 @@ const projects = [
     title: 'PRGM Cheatsheets',
     description: 'My personal WordPress site consisting of Web Development related blogs that aim to provide a resource for starting developers.',
     description2: 'WordPress',
-    description3: 'PRGM is my personal blog, and consists of web development cheatsheets. It aims to provide a comprehensive and reliable resource for developers of all skill levels to quickly access essential information and handy tips related to web development. Moreover, I created the blog to help learners and developers (such as myself) to save time and effort by providing a reference that aids in understanding and implementing basic web development techniques.',
+    description3: 'PRGM is my personal blog, and consists of web development cheatsheets. Moreover, I created the blog to help learners and developers (such as myself) to save time and effort by providing a reference that aids in understanding and implementing basic web development techniques.',
     image: '/images/prgm-home.png',
     links: [
       'https://prgmm.WordPress.com/',
