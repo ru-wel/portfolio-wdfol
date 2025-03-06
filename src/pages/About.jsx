@@ -1,12 +1,15 @@
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
+import { motion } from "motion/react";
+import { useInView } from 'react-intersection-observer';
+
 import Nav from './Nav';
 import ProfileCard from './ProfileCard.jsx';
 import "../assets/styles/about.scss";
 import skills from '../assets/skills';
 import ProgressProvider from "./ProgressProvider";
-import certifcates from "../assets/certificates.js";
+import certificates from "../assets/certificates.js";
 
 const About = () => {
 
@@ -24,6 +27,51 @@ const About = () => {
       }
     } else {
       console.warn('No URL provided for this action');
+    }
+  };
+
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1,
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 50,
+      scale: 0.9
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const imageVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: { 
+        delay: 0.2, 
+        duration: 0.4 
+      }
     }
   };
 
@@ -46,7 +94,7 @@ const About = () => {
           </div>
           <div className="window-content">
             <h2>Personal Bio</h2>
-            <p>I am currently a 3rd Year Web Development Student with a strong passion for anything technology related. Being exposed to different gadgets from an early age sparked my genuine curiosity for all things technology and ultimately led me to this course / field. Beyond coding, I enjoy watching movies, listening to music, and engaging in various sports activities. In addition, I try to continuously explore new technologies and best practices related to Web Development to enhance my skills and prepare myself for the future.</p>
+            <p className="personal-bio">I am currently a 3rd Year Web Development Student with a strong passion for anything technology related. Being exposed to different gadgets from an early age sparked my genuine curiosity for all things technology and ultimately led me to this course / field. Beyond coding, I enjoy watching movies, listening to music, and engaging in various sports activities. In addition, I try to continuously explore new technologies and best practices related to Web Development to enhance my skills and prepare myself for the future.</p>
           </div>
         </div>
 
@@ -79,18 +127,20 @@ const About = () => {
 
     <div className="certificate-container">
       <h1>Certifications and Trainings</h1>
-      <div className="certificate-cards">
-        {certifcates.map((certificate, index) => 
-          <div className="card" key={index}>
-            <div className="certificate-logo">
-              <img src={certificate.image} alt={certificate.company} width="150px" height="150px" />
-            </div>
-            <h3>{certificate.company}</h3>
-            <p>{certificate.title}</p>
-            <button className='button-confirm' onClick={() => handleAction(certificate)}>{certificate.action}</button>
-          </div>
-        )}
-      </div>
+      <motion.div ref={ref} className="certificate-cards" initial="hidden" animate={inView ? "visible" : "hidden"} variants={containerVariants}>
+        {certificates.map((certificate, index) => (
+          <motion.div className="card" key={index} variants={cardVariants} custom={index} >
+            <motion.div className="certificate-logo" variants={imageVariants}>
+              <img src={certificate.image} alt={certificate.company} width="150px" height="150px"/>
+            </motion.div>
+            <motion.h3>{certificate.company}</motion.h3>
+            <motion.p>{certificate.title}</motion.p>
+            <button className='button-confirm' onClick={() => handleAction(certificate)}>
+              {certificate.action}
+            </button>
+          </motion.div>
+        ))}
+      </motion.div>
     </div>
     </>
   );

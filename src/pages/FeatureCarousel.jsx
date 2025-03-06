@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
-import '../assets/styles/FeatureCarousel.scss';
 import 'react-photo-view/dist/react-photo-view.css';
+import '../assets/styles/FeatureCarousel.scss';
 
 const FeatureCarousel = ({ features }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
