@@ -1,10 +1,11 @@
 import React from 'react'
 import { useParams } from "react-router-dom";
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 
-import Nav from './Nav';
+import 'react-photo-view/dist/react-photo-view.css';
 import "../assets/styles/projectpage.scss";
+import Nav from './Nav';
 import projects from '../assets/projects'
-
 import FeatureCarousel from './FeatureCarousel';
 
 const ProjectPage = () => {
@@ -15,7 +16,12 @@ const ProjectPage = () => {
     <div className='container'>
       <Nav logo={project.logo}/>
       <div className="projectmain-card">
-        <img src={project.image} alt="" width={'537px'} height={'450px'} className='project-image'/>
+        <PhotoProvider maskOpacity={0.5}>
+          <PhotoView key={id} src={project.image}>
+            <img src={project.image} alt="" width={'537px'} height={'450px'} className='project-image'/>
+          </PhotoView>
+        </PhotoProvider>
+        <p className="note">*click the image to preview</p>
 
         <div className="project-content">
 

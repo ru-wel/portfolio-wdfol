@@ -1,10 +1,5 @@
 .container{
 
-  // .project-image-card{
-  //   width: 537px;
-  //   height: 450px;
-  // }
-
   .projectmain-card{
     text-align: left;
     border: 3px solid #000;
@@ -23,6 +18,14 @@
     .project-image{
       width: auto;
       object-fit: cover;
+    }
+
+    .note{
+      font-size: 0.9rem;
+      padding-top: 0.3rem;
+      padding-left: 0.3rem;
+      font-weight: 300;
+      color: #F3EDEA;
     }
 
     .project-content{
