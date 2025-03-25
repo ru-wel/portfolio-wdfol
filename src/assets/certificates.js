@@ -63,6 +63,14 @@ const certifcates = [
     url: 'https://app.hubspot.com/academy/achievements/1nfk6pj8/en/1/reuel-christian-sundiam/seo-ii',
     isDownload: false,
   },
+  {
+    company: 'Skillshop',
+    title: 'Google Analytics 4',
+    image: 'images/ga.png',
+    action: 'View',
+    url: 'https://skillshop.credential.net/0362a515-89b5-4a7e-aff6-3d75f3990aab#acc.1QYUCVGr',
+    isDownload: false,
+  },
 ]
 
 export default certifcates;

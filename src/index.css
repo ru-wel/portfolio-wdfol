@@ -23,14 +23,6 @@
   font-style: normal;
 }
 
-/* @font-face {
-  font-family: 'PX Sans Nouveaux', sans-serif;
-  src: url('./fonts/px_sans_nouveaux.ttf') format("truetype");
-  font-family: 'px sans nouveaux', sans-serif;
-  font-weight: 400;
-  font-style: normal;
-} */
-
 /* RESET */
 
 *,
@@ -51,13 +43,6 @@ html {
   color: #000000;
   background-color: #F3EDEA;
 }
-
-/* #root{
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
 
 img {
   display: block;
