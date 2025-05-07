@@ -24,12 +24,12 @@ const Projects = () => {
             </div>
 
             <div className="window-content">
-              <p>Throughout my three (3) years of studying Web Development, these have been the projects that I have created so far! These range from Client Projects to School Works, while also taking up both <span>frontend and backend</span> roles during the development process.</p>
+              <p>Throughout my three (3) years of studying Web Development, these have been some of the projects that I have created so far! These range from Client Projects to School Works, while also taking up both <span>frontend and backend</span> roles during the development process.</p>
             </div>
           </div>
 
           <div className="projects">
-            <h2>Featured Projects</h2>
+            <h2>Featured Projects (Latest - Oldest)</h2>
 
             <div className="projectcards">
               {projects.map((project, index) => 

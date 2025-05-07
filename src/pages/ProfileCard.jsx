@@ -26,7 +26,7 @@ const ProfileCard = () => {
       
       <div className="button-container">
         <button className="profile-button">
-          <a href="RCGS-PORTFOLIO.pdf" download>Download Resume</a>
+          <a href="RCGS-RESUME.pdf" download>Download Resume</a>
           <i className="fa-solid fa-cloud-arrow-down"></i>
         </button>
         <button className="profile-button">

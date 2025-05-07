@@ -14,7 +14,7 @@ const skills = [
       { name: "Node.js", progress: 65 },
       { name: "Express.js", progress: 65 },
       { name: "Vue.js", progress: 40 },
-      { name: "React", progress: 40 },
+      { name: "React", progress: 65 },
       { name: "AngularJS", progress: 50 },
       { name: "Laravel", progress: 40 },
       { name: "Bootstrap", progress: 60 },
@@ -25,7 +25,7 @@ const skills = [
     category: "Databases",
     skills: [
       { name: "MySQL", progress: 60 },
-      { name: "MongoDB", progress: 50 },
+      { name: "MongoDB", progress: 60 },
       { name: "PostgreSQL", progress: 60 },
       { name: "Firebase", progress: 50 },
     ]
