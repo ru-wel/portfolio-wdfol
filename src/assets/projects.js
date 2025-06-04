@@ -4,7 +4,7 @@ const projects = [
     title: 'The Angelite',
     description: 'A WordPress site for The Angelite, the official student publication of Holy Angel University.',
     description2: 'WordPress, Plugins: WPCode Lite, PDF Flipbook Heyzine, PublishPress Authors',
-    description3: "This WordPress site for The Angelite serves as a centralized platform for publishing various news and updates, as previously, the articles were shared only on social media, which limited accessibility and long-term visibility. In addition, it was developed to improve content organization, archive past publications, and reach a wider audience within and beyond the university.",
+    description3: "This WordPress site for The Angelite serves as a centralized platform for publishing various news and updates, as previously, the articles were shared only on social media—which limited accessibility and long-term visibility. In addition, it was developed to improve content organization, archive past publications, and reach a wider audience within and beyond the university.",
     image: '/images/angelite-home.png',
     links: [
       'https://theangelite.net/',

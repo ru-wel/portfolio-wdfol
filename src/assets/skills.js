@@ -15,9 +15,9 @@ const skills = [
       { name: "Express.js", progress: 65 },
       { name: "Vue.js", progress: 40 },
       { name: "React", progress: 65 },
-      { name: "AngularJS", progress: 50 },
+      { name: "AngularJS", progress: 55 },
       { name: "Laravel", progress: 40 },
-      { name: "Bootstrap", progress: 60 },
+      { name: "Bootstrap", progress: 50 },
       { name: "Tailwind", progress: 40 },
     ]
   },
