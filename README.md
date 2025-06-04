@@ -1,8 +1,15 @@
-# React + Vite
+# Reuel Christian Sundiam – Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Throughout my three (3) years of studying Web Development, this is my responsive and interactive personal portfolio built with **React** and **SCSS**, designed to showcase my skills, experiences, and web development projects.
 
-Currently, two official plugins are available:
+You can view the live site here: https://rcgs-portfolio.netlify.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## About Me
+
+I am a passionate learner who loves exploring technology—leading to my interest in both frontend and backend development and dream of becoming a full-stack developer. I am eager to keep learning and growing to achieve my goals and make a difference in the tech world.
+
+## Contact Me
+
+**Email**: reuelchristian.sundiam04@gmail.com
+
+**LinkedIn**: https://www.linkedin.com/in/reuel-christian-sundiam/
