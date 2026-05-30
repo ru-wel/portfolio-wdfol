@@ -23,7 +23,7 @@ const About = () => {
         link.click();
         document.body.removeChild(link);
       } else {
-        window.open(certificate.url, '_blank');
+        window.open(certificate.url, '_blank', 'noopener,noreferrer');
       }
     } else {
       console.warn('No URL provided for this action');

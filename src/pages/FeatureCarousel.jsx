@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import '../assets/styles/FeatureCarousel.scss';
@@ -6,49 +6,66 @@ import '../assets/styles/FeatureCarousel.scss';
 const FeatureCarousel = ({ features }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const isTransitioningRef = useRef(false);
+  const screenshots = features.screenshots;
+  const slideCount = screenshots.length;
 
-  const nextSlide = () => {
-    if (!isTransitioning) {
-      setIsTransitioning(true);
-      setCurrentIndex((prevIndex) => (prevIndex === features.screenshots.length - 1 ? 0 : prevIndex + 1));
+  const beginTransition = useCallback((getNextIndex) => {
+    if (isTransitioningRef.current || slideCount <= 1) {
+      return;
     }
-  };
 
-  const prevSlide = () => {
-    if (!isTransitioning) {
-      setIsTransitioning(true);
-      setCurrentIndex((prevIndex) => (prevIndex === 0 ? features.screenshots.length - 1 : prevIndex - 1));
-    }
-  };
+    isTransitioningRef.current = true;
+    setIsTransitioning(true);
+    setCurrentIndex((prevIndex) => getNextIndex(prevIndex));
+  }, [slideCount]);
 
-  const goToSlide = (index) => {
-    if (!isTransitioning && index !== currentIndex) {
-      setIsTransitioning(true);
-      setCurrentIndex(index);
+  const nextSlide = useCallback(() => {
+    beginTransition((prevIndex) => (prevIndex === slideCount - 1 ? 0 : prevIndex + 1));
+  }, [beginTransition, slideCount]);
+
+  const prevSlide = useCallback(() => {
+    beginTransition((prevIndex) => (prevIndex === 0 ? slideCount - 1 : prevIndex - 1));
+  }, [beginTransition, slideCount]);
+
+  const goToSlide = useCallback((index) => {
+    if (index === currentIndex) {
+      return;
     }
-  };
+
+    beginTransition(() => index);
+  }, [beginTransition, currentIndex]);
 
   useEffect(() => {
+    if (!isTransitioning) {
+      return undefined;
+    }
+
     const timer = setTimeout(() => {
+      isTransitioningRef.current = false;
       setIsTransitioning(false);
     }, 400);
 
     return () => clearTimeout(timer);
-  }, [currentIndex]);
+  }, [isTransitioning]);
 
   useEffect(() => {
+    if (slideCount <= 1) {
+      return undefined;
+    }
+
     const interval = setInterval(() => {
       nextSlide();
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, [nextSlide, slideCount]);
 
   return (
     <div className="feature-carousel">
       <div className="feature-carousel__content">
         <div className="feature-carousel__slides" style={{ transform: `translateX(-${currentIndex * 100}%)` }} >
-          {features.screenshots.map((feature, index) => (
+          {screenshots.map((feature, index) => (
             <div className="feature-carousel__slide" key={index}>
               <div className="feature-spotlight">
                 <div>
@@ -75,7 +92,7 @@ const FeatureCarousel = ({ features }) => {
         <button className="feature-carousel__arrow feature-carousel__arrow--prev" onClick={prevSlide}> &#8592; </button>
         
         <div className="feature-carousel__indicators">
-          {features.screenshots.map((_, index) => (
+          {screenshots.map((_, index) => (
             <button key={index} className={`feature-carousel__indicator ${index === currentIndex ? 'active' : ''}`} onClick={() => goToSlide(index)}
             />
           ))}

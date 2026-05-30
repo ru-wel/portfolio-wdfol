@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import React from 'react'
 
 import "../assets/styles/profilecard.scss";
 
@@ -18,23 +17,21 @@ const ProfileCard = () => {
       <p className="profile-title">Backend | Frontend Developer</p>
       
       <div className="social-links">
-        <a href="https://www.facebook.com/reuelchristian.sundiam" target='_blank' className="social-icon"><i className="fab fa-facebook"></i></a>
-        <a href="https://github.com/ru-wel" target='_blank' className="social-icon"><i className="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/reuel-christian-sundiam" target='_blank' className="social-icon"><i className="fab fa-linkedin"></i></a>
-        <a href="mailto:reuelchristian.sundiam04@gmail.com" target='_blank' className="social-icon"><i className="fas fa-envelope"></i></a>
+        <a href="https://www.facebook.com/reuelchristian.sundiam" target='_blank' rel="noopener noreferrer" className="social-icon"><i className="fab fa-facebook"></i></a>
+        <a href="https://github.com/ru-wel" target='_blank' rel="noopener noreferrer" className="social-icon"><i className="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/reuel-christian-sundiam" target='_blank' rel="noopener noreferrer" className="social-icon"><i className="fab fa-linkedin"></i></a>
+        <a href="mailto:reuelchristian.sundiam04@gmail.com" target='_blank' rel="noopener noreferrer" className="social-icon"><i className="fas fa-envelope"></i></a>
       </div>
       
       <div className="button-container">
-        <button className="profile-button">
-          <a href="RCGS-RESUME.pdf" download>Download Resume</a>
+        <a href="RCGS-RESUME.pdf" download className="profile-button">
+          <span>Download Resume</span>
           <i className="fa-solid fa-cloud-arrow-down"></i>
-        </button>
-        <button className="profile-button">
-          <Link to={"/contact"}>
-            Contact Me
-          </Link>
+        </a>
+        <Link to={"/contact"} className="profile-button">
+          <span>Contact Me</span>
           <i className="fa-solid fa-id-card-clip"></i>
-        </button>
+        </Link>
       </div>
     </div>
   )

@@ -1,5 +1,4 @@
-import React from 'react'
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 import 'react-photo-view/dist/react-photo-view.css';
@@ -12,13 +11,38 @@ const ProjectPage = () => {
   const { id } = useParams();
   const project = projects.find((p) => p.id === Number(id));
 
+  if (!project) {
+    return (
+      <div className='container'>
+        <Nav logo="/images/wel-logo-final.png"/>
+        <main className="not-found-card">
+          <div className="window">
+            <div className="window-header">
+              <h1 className="window-title">Project Not Found</h1>
+              <div className="window-controls">
+                <div className="control-dot"></div>
+                <div className="control-dot"></div>
+                <div className="control-dot"></div>
+              </div>
+            </div>
+
+            <div className="window-content">
+              <p>The project you are looking for does not exist or may have been moved.</p>
+              <Link to="/projects" className="not-found-link">Back to Projects</Link>
+            </div>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className='container'>
       <Nav logo={project.logo}/>
       <div className="projectmain-card">
         <PhotoProvider maskOpacity={0.5}>
           <PhotoView key={id} src={project.image}>
-            <img src={project.image} alt="" width={'537px'} height={'450px'} className='project-image'/>
+            <img src={project.image} alt={project.title} width={'537px'} height={'450px'} className='project-image'/>
           </PhotoView>
         </PhotoProvider>
         <p className="note">*click the image to preview</p>

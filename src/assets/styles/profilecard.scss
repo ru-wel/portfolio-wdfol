@@ -96,9 +96,13 @@
       font-size: 14px;
       background-color: #F3EDEA;
       color: #000;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: all 0.2s;
 
-      a {
+      span {
         font-size: 0.7rem;
         text-transform: uppercase;
         font-family: 'PX Sans Nouveaux';
@@ -114,6 +118,10 @@
         transform: scale(1.01);
         background-color: #2CCF76;
         box-shadow: 4px 4px 10px black;
+      }
+
+      &:first-child {
+        border-right: 1px solid #000;
       }
     }
   }
