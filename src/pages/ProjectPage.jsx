@@ -8,8 +8,8 @@ import projects from '../assets/projects'
 import FeatureCarousel from './FeatureCarousel';
 
 const ProjectPage = () => {
-  const { id } = useParams();
-  const project = projects.find((p) => p.id === Number(id));
+  const { slug } = useParams();
+  const project = projects.find((p) => p.slug === slug);
 
   if (!project) {
     return (
@@ -41,7 +41,7 @@ const ProjectPage = () => {
       <Nav logo={project.logo}/>
       <div className="projectmain-card">
         <PhotoProvider maskOpacity={0.5}>
-          <PhotoView key={id} src={project.image}>
+          <PhotoView key={project.slug} src={project.image}>
             <img src={project.image} alt={project.title} width={'537px'} height={'450px'} className='project-image'/>
           </PhotoView>
         </PhotoProvider>

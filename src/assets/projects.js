@@ -1,6 +1,38 @@
 const projects = [
   {
-    id: 1,
+    slug: 'arise-hris',
+    title: 'ARISE HRIS',
+    description: 'A Human Resource Information System for managing employees, HR workflows, project assignments, leave requests, and performance evaluations.',
+    description2: 'React, Node.js, Express.js, PostgreSQL (Supabase), Tailwind CSS, Google Cloud',
+    description3: 'ARISE HRIS is a full-stack Human Resource Information System developed for a construction company. The system centralizes employee records, onboarding files, leave management, project assignments, performance evaluations, audit logs, and HR analytics.',
+    image: '/images/hris-dashboard.png',
+    links: [
+      'https://acdc-hris.site',
+      'https://github.com/ru-wel/WDCAP-HRIS'
+    ],
+    roles: ['Backend', 'School / Capstone'],
+    logo: '/images/wel-logo-final.png',
+    screenshots: [
+      '/images/hris-employees.png',
+      '/images/hris-leave.png',
+      '/images/hris-evaluation.png',
+      '/images/hris-analytics.png',
+    ],
+    features: [
+      'Employee Management',
+      'Leave Management',
+      'Performance Evaluation',
+      'Audit Logs and Analytics',
+    ],
+    featureDescription: [
+      'Created backend services for managing employee profiles, departments, positions, user accounts, onboarding records, and 201 file document handling.',
+      'Built backend workflows for leave requests, leave credit tracking, approval handling, and leave history records.',
+      'Implemented backend support for performance evaluation records, evaluation templates, document uploads, and employee evaluation history.',
+      'Developed audit logging and reporting endpoints to track critical HR actions and provide data for dashboards, analytics, and system activity reviews.',
+    ],
+  },
+  {
+    slug: 'the-angelite',
     title: 'The Angelite',
     description: 'A WordPress site for The Angelite, the official student publication of Holy Angel University.',
     description2: 'WordPress, Plugins: WPCode Lite, PDF Flipbook Heyzine, PublishPress Authors',
@@ -31,7 +63,7 @@ const projects = [
     ],
   },
   {
-    id: 2,
+    slug: 'internstreet',
     title: 'InternStreet',
     description: 'InternStreet is a website that connects students from the Philippines with internships offered by companies.',
     description2: 'ReactJS, Node.js, Express.js, PostgreSQL (Supabase)',
@@ -69,7 +101,7 @@ const projects = [
     ],
   },
   {
-    id: 4,
+    slug: 'baumann-fit-box',
     title: 'Baumann Fit Box',
     description: 'A WordPress site for Baumann Fit Box, a premium gym located in Tagaytay City, Philippines.',
     description2: 'WordPress, Yoast SEO',
@@ -97,7 +129,7 @@ const projects = [
     ],
   },
   {
-    id: 5,
+    slug: 'mnhs-lms',
     title: 'MNHS LMS',
     description: 'A Learning Management System (LMS) proposed for a local high school in Mexico, Pampanga.',
     description2: 'Node.js, Express.js, PostgreSQL',
@@ -126,7 +158,7 @@ const projects = [
     ],
   },
   {
-    id: 6,
+    slug: 'caution-coffee',
     title: 'Caution Coffee',
     description: 'A website created to showcase Caution Coffee, a cafe and premium supply store located in Angeles City, Philippines',
     description2: 'EJS, Node.js, Express.js, Firebase',
@@ -155,7 +187,7 @@ const projects = [
     ],
   },
   {
-    id: 7,
+    slug: 'area-your-home-away-from-home',
     title: 'AREA: Your Home Away From Home',
     description: 'AREA is a website that focuses on travel and lifestyle where we offer a fictional Airbnb-inspired service and layout.',
     description2: 'HTML, CSS, JS, PHP, MySQL, Bootstrap',
@@ -184,7 +216,7 @@ const projects = [
     ],
   },
   {
-    id: 8,
+    slug: 'prgm-cheatsheets',
     title: 'PRGM Cheatsheets',
     description: 'My personal WordPress site consisting of Web Development related blogs that aim to provide a resource for starting developers.',
     description2: 'WordPress',

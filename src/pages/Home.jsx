@@ -34,12 +34,12 @@ const Home = () => {
           <h2>Featured Projects</h2>
 
           <div className="projectcards">
-            {projects.slice(0,2).map((project, index) => 
-              <div className="card" key={index}>
-                <Link to={`/project/${project.id}`}>
+            {projects.slice(0,2).map((project) => 
+              <div className="card" key={project.slug}>
+                <Link to={`/projects/${project.slug}`}>
                   <img src={project.image} alt={project.title} width="279px" height="173px" />
                 </Link>
-                <Link to={`/project/${project.id}`} className='project-link'>
+                <Link to={`/projects/${project.slug}`} className='project-link'>
                   <h3>{project.title}</h3>
                 </Link>
                 <p>{project.description}</p>
