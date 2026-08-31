@@ -10,7 +10,7 @@ const NotFound = () => (
     <main id="main-content" className="not-found-card">
       <div className="window">
         <div className="window-header">
-          <h1 className="window-title">404 — Page not found</h1>
+          <h1 className="window-title">404: page not found</h1>
           <div className="window-controls" aria-hidden="true">
             <div className="control-dot"></div>
             <div className="control-dot"></div>

@@ -36,7 +36,7 @@ const projects = [
     title: 'The Angelite',
     description: 'A WordPress site for The Angelite, the official student publication of Holy Angel University.',
     description2: 'WordPress, Plugins: WPCode Lite, PDF Flipbook Heyzine, PublishPress Authors',
-    description3: "This WordPress site for The Angelite serves as a centralized platform for publishing various news and updates, as previously, the articles were shared only on social media—which limited accessibility and long-term visibility. In addition, it was developed to improve content organization, archive past publications, and reach a wider audience within and beyond the university.",
+    description3: "This WordPress site for The Angelite serves as a centralized platform for publishing various news and updates, as previously, the articles were shared only on social media, which limited accessibility and long-term visibility. In addition, it was developed to improve content organization, archive past publications, and reach a wider audience within and beyond the university.",
     image: '/images/angelite-home.png',
     links: [
       'https://theangelite.net/',
@@ -67,7 +67,7 @@ const projects = [
     title: 'InternStreet',
     description: 'InternStreet is a website that connects students from the Philippines with internships offered by companies.',
     description2: 'ReactJS, Node.js, Express.js, PostgreSQL (Supabase)',
-    description3: "InternStreet is designed to connect students with internship opportunities tailored to their location and field of interest. The platform allows users to create profiles, explore internship listings, and apply directly—acting as a central hub for internships all over the Philippines.",
+    description3: "InternStreet is designed to connect students with internship opportunities tailored to their location and field of interest. The platform allows users to create profiles, explore internship listings, and apply directly, acting as a central hub for internships all over the Philippines.",
     image: '/images/intern-home.png',
     links: [
       'https://internstreetph.site/',
@@ -95,7 +95,7 @@ const projects = [
       'Created the backend for the apply page, enabling users to apply to that certain company and input their information & resume and cover letter.',
       'Created the backend and design for the admin dashboard page wherein it provides an overview of total users, applications, job postings, and activity logs. It also features interactive charts that visualize statistics such as OS and browser distribution.',
       'Created the backend for the applications page that allows administrators to manage user applications with full CRUD functionality.',
-      'Created the backend for the users page that allows administrators to manage users with full CRUD functionality—while also granting admin privileges when needed.',
+      'Created the backend for the users page that allows administrators to manage users with full CRUD functionality, while also granting admin privileges when needed.',
       'Created the backend for the jobs page that allows administrators to manage job details with full CRUD functionality.',
       'Created the backend for the logs page wherein user activities and information are logged and stored in the database, and administrators can also delete certain logs.',
     ],
@@ -153,8 +153,8 @@ const projects = [
     ],
     featureDescription: [
       "Created the backend for the LMS' student dashboard to display all the subjects of the student, and view uploaded modules.",
-      'Created the backend for the admin dashboard that allows administrators to manage user accounts with full CRUD functionality—while also granting admin privileges when needed.',
-      'Created the backend for the admin dashboard, enabling administrators to manage modules—allowing them to upload, update, and delete uploaded modules.',
+      'Created the backend for the admin dashboard that allows administrators to manage user accounts with full CRUD functionality, while also granting admin privileges when needed.',
+      'Created the backend for the admin dashboard, enabling administrators to manage modules, allowing them to upload, update, and delete uploaded modules.',
     ],
   },
   {

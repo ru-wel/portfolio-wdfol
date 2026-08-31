@@ -1,5 +1,4 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css');
-@import url('https://fonts.cdnfonts.com/css/px-sans-nouveaux');
 
 /* FONTS
    Local Px Grotesk faces. The family name must be a bare string (no fallback
@@ -27,6 +26,14 @@
   font-family: 'Px Grotesk';
   src: url('./fonts/Px-Grotesk-Bold.ttf') format('truetype');
   font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PX Sans Nouveaux';
+  src: url('./fonts/px_sans_nouveaux.ttf') format('truetype');
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -73,9 +80,40 @@
   --shadow-lift: -15px -17px 7.7px var(--deep-tint);
   --shadow-soft: 0 6px 18px rgba(46, 26, 79, 0.14);
 
-  --radius-sm: 2px;
-  --radius-md: 5px;
-  --radius-lg: 10px;
+  /* SPACING — 4px base. Every padding, gap and margin comes from here. */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 2.5rem;
+  --space-8: 3rem;
+  --space-9: 4rem;
+
+  /* Clearance for the fixed mobile nav bar. Not a spacing step. */
+  --nav-clearance: 150px;
+
+  /* RADIUS — the rule, in full:
+       surface  0     panels, windows, cards, nav cells (anything that tiles
+                      or shares an edge with a neighbour)
+       control  5px   free-standing interactive controls: buttons, inputs,
+                      links styled as buttons
+       media    10px  images and image frames
+       round    50%   circular ornaments and circular icon buttons
+     Nothing on the page uses a radius outside these four. */
+  --radius-surface: 0;
+  --radius-control: 5px;
+  --radius-media: 10px;
+  --radius-round: 50%;
+
+  /* TYPE SCALE — the page title is the largest thing on the page. */
+  --text-xs: 0.78rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.35rem;
+  --text-2xl: 1.75rem;
 
   --measure: 65ch;
   --shell-max: 1440px;
@@ -182,7 +220,7 @@ p {
 :focus-visible {
   outline: 2px solid var(--deep);
   outline-offset: 2px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-control);
 }
 
 /* SCREEN-READER ONLY */
@@ -204,20 +242,20 @@ p {
 
 .skip-link {
   position: absolute;
-  left: 0.5rem;
+  left: var(--space-2);
   top: -4rem;
   z-index: var(--z-skip);
-  padding: 0.7rem 1rem;
+  padding: var(--space-3) var(--space-4);
   background: var(--ink);
   color: var(--paper);
-  font-size: 0.8rem;
+  font-size: var(--text-xs);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   transition: top var(--speed) var(--ease);
 }
 
 .skip-link:focus-visible {
-  top: 0.5rem;
+  top: var(--space-2);
 }
 
 /* MOTION */

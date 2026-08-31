@@ -24,8 +24,8 @@ const Home = () => {
             </div>
             <div className="window-content">
               <p><span>Hello! I&rsquo;m Reuel Christian Sundiam.</span></p>
-              <p>I am a passionate learner who loves exploring technology—leading to my interest in both <span>frontend</span> and <span>backend development</span> and dream of becoming a full-stack developer. I am eager to keep learning and growing to achieve my goals and make a difference in the tech world.</p>
-              <p><span className='tagline'>— &quot;Good things come one line at a time&quot;</span></p>
+              <p>I am a passionate learner who loves exploring technology, leading to my interest in both <span>frontend</span> and <span>backend development</span> and dream of becoming a full-stack developer. I am eager to keep learning and growing to achieve my goals and make a difference in the tech world.</p>
+              <p><span className='tagline'>&quot;Good things come one line at a time&quot;</span></p>
             </div>
         </section>
 

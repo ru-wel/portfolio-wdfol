@@ -4,35 +4,36 @@
     width: min(620px, 80%);
     border: 3px solid var(--ink);
     box-shadow: -15px -17px 7.7px var(--deep-tint);
-    padding: 1rem;
+    padding: var(--space-4);
     background-color: var(--paper);
     opacity: 0;
     animation: fadeInUp 0.5s ease-out forwards;
 
     .window{
       border: 2px solid var(--ink);
-      border-radius: 2px;
+      border-radius: var(--radius-surface);
 
       .window-header{
-        padding: 8px 12px;
+        padding: var(--space-2) var(--space-3);
         border-bottom: 1px solid var(--ink);
         display: flex;
         justify-content: space-between;
         align-items: center;
 
         .window-title{
-          font-size: 1rem;
+          font-size: var(--text-2xl);
+          line-height: 1.1;
         }
 
         .window-controls{
           display: flex;
-          gap: 4px;
+          gap: var(--space-1);
 
           .control-dot{
             width: 12px;
             height: 12px;
             border: 1px solid var(--ink);
-            border-radius: 50%;
+            border-radius: var(--radius-round);
           }
 
           .control-dot:last-child{
@@ -42,10 +43,10 @@
       }
 
       .window-content{
-        padding: 1.5rem;
+        padding: var(--space-5);
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: var(--space-4);
         font-weight: 300;
       }
     }
@@ -53,15 +54,15 @@
     .not-found-actions{
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
+      gap: var(--space-3);
     }
 
     .not-found-link{
       align-self: flex-start;
       border: 2px solid var(--ink);
-      padding: 0.7rem 1rem;
+      padding: var(--space-3) var(--space-4);
       font-family: 'PX Sans Nouveaux';
-      font-size: 0.8rem;
+      font-size: var(--text-xs);
       text-transform: uppercase;
       transition: all 0.2s;
 
@@ -90,7 +91,7 @@
     }
 
     @media (max-width: 1024px) {
-      margin-top: 1rem;
+      margin-top: var(--space-4);
       width: 70%;
     }
 
@@ -102,7 +103,7 @@
       width: 90%;
 
       .window .window-content{
-        padding: 1rem;
+        padding: var(--space-4);
       }
 
       .not-found-link{
@@ -129,9 +130,9 @@
 
     .back-link{
       align-self: flex-start;
-      margin: 0.75rem 0 0.5rem 0.75rem;
-      padding: 0.35rem 0.7rem;
-      font-size: 0.78rem;
+      margin: var(--space-3) 0 var(--space-2) var(--space-3);
+      padding: var(--space-1) var(--space-3);
+      font-size: var(--text-xs);
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--paper);
@@ -154,9 +155,9 @@
     }
 
     .note{
-      font-size: 0.85rem;
-      padding-top: 0.3rem;
-      padding-left: 0.3rem;
+      font-size: var(--text-xs);
+      padding-top: var(--space-1);
+      padding-left: var(--space-1);
       font-weight: 300;
       color: var(--paper);
     }
@@ -164,44 +165,44 @@
     .project-content{
       color: var(--paper-raised);
       font-weight: 300;
-      padding: 1rem;
+      padding: var(--space-4);
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: var(--space-2);
 
       .project-content-role{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         flex-wrap: wrap;
-        gap: 0.5rem;
+        gap: var(--space-2);
 
         .roles{
           display: flex;
           flex-direction: row;
           align-items: center;
-          gap: 5px;
+          gap: var(--space-1);
           border: 1px solid var(--paper);
           width: fit-content;
-          font-size: 14px;
+          font-size: var(--text-sm);
           font-weight: 500;
           white-space: nowrap;
 
           :nth-child(1){
             background-color: var(--paper);
             color: var(--deep);
-            padding: 0.6rem;
+            padding: var(--space-2);
           }
 
           :nth-child(2){
-            padding: 0.6rem;
+            padding: var(--space-2);
           }
         }
 
         .social-links {
           display: flex;
           align-items: center;
-          gap: 0.8rem;
+          gap: var(--space-3);
           animation-delay: 0.5s;
       
           .social-icon {
@@ -217,7 +218,7 @@
 
         @media (max-width: 370px){
           flex-direction: column;
-          gap: 10px;
+          gap: var(--space-2);
         }
         
       }
@@ -227,10 +228,10 @@
       }
 
       h1{
-        font-size: 1.5rem;
+        font-size: var(--text-2xl);
         font-weight: 700;
         letter-spacing: -0.02em;
-        padding-bottom: 0.35rem;
+        padding-bottom: var(--space-1);
       }
 
       .border-btm{
@@ -238,7 +239,7 @@
       }
 
       .border-btm{
-        padding-bottom: 0.5rem;
+        padding-bottom: var(--space-2);
       }
 
       span{
@@ -249,7 +250,7 @@
 
     @media (max-width: 1024px) {
       flex-direction: column;
-      gap: 0.5rem;
+      gap: var(--space-2);
       height: auto;
       width: 70%;
 
@@ -276,7 +277,7 @@
   .projectpage-card{
 
     .features-section{
-      padding: 0.5rem;
+      padding: var(--space-2);
     }
   }
 }

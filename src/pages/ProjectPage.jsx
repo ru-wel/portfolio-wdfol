@@ -47,7 +47,7 @@ const ProjectPage = () => {
           <Link to="/projects" className="back-link">← All projects</Link>
 
           <PhotoView key={project.slug} src={project.image}>
-            <img src={project.image} alt={`${project.title} — main screen`} width={537} height={450} className='project-image'/>
+            <img src={project.image} alt={`${project.title}: main screen`} width={537} height={450} className='project-image'/>
           </PhotoView>
           <p className="note">Click the image to preview it full size.</p>
 
@@ -81,7 +81,7 @@ const ProjectPage = () => {
           <div className="window">
 
             <div className="window-header">
-              <h2 id="features-heading" className="window-title">Project features</h2>
+              <h2 id="features-heading" className="window-title window-title--section">Project features</h2>
               <div className="window-controls" aria-hidden="true">
                   <div className="control-dot"></div>
                   <div className="control-dot"></div>
