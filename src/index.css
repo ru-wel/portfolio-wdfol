@@ -234,7 +234,6 @@ p {
 }
 
 /* Percentages, counts and dates read straight down the column. */
-.CircularProgressbar-text,
 .tabular {
   font-variant-numeric: tabular-nums;
 }

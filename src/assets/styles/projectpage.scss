@@ -116,9 +116,15 @@
   .projectmain-card{
     text-align: left;
     border: var(--border-strong) solid var(--ink);
-    width: 30%;
+    /* The right pane is 40% and had room to spare while this one overflowed. */
+    width: 36%;
     height: 80%;
     max-height: 750px;
+    /* Without this, overflow defaults to `visible`: the text escaped the
+       purple box onto the cream page, where color: var(--paper) made it
+       invisible rather than clipped. Long descriptions now scroll. */
+    overflow-y: auto;
+    overflow-x: hidden;
     box-shadow: var(--shadow-hard);
     display: flex;
     flex-direction: column;
@@ -150,8 +156,19 @@
     }
 
     .project-image{
-      width: auto;
+      /* Source art is 1920x1361. With `width: auto` the image took the pane's
+         full width and its height followed the ratio, so widening the pane
+         made the image taller and gave the text back nothing. Fixed height
+         plus cover crops instead of scaling. */
+      width: 100%;
+      height: auto;
+      /* A ceiling, not a fixed height. Source ratios run from 0.38 (angelite)
+         to 0.82 (caution); a hard height would crop the wide ones to fill a
+         box they never needed. Only images tall enough to squeeze the text
+         get cropped. */
+      max-height: min(38dvh, 320px);
       object-fit: cover;
+      object-position: top;
     }
 
     .note{
@@ -160,6 +177,15 @@
       padding-left: var(--space-1);
       font-weight: 300;
       color: var(--paper);
+    }
+
+    /* The page-wide thumb colour is --deep, which is this card's background. */
+    &::-webkit-scrollbar-thumb{
+      background: var(--paper);
+    }
+
+    &::-webkit-scrollbar-thumb:hover{
+      background: var(--accent);
     }
 
     .project-content{
@@ -253,6 +279,15 @@
       gap: var(--space-2);
       height: auto;
       width: 70%;
+      /* The card stops being height-capped here, so the scroll container and
+         the image ceiling have to come off with it. Neither was reset before,
+         which left 769-1024px capped at 750px and scrolling inside the card. */
+      max-height: none;
+      overflow: visible;
+
+      .project-image{
+        max-height: none;
+      }
 
       .social-links{
         margin-bottom: 0 !important;

@@ -3,8 +3,10 @@
   max-width: 1200px;
   margin: 0 auto var(--space-6);
   position: relative;
-  overflow: hidden;
-  
+  /* No overflow clipping here. __content below already hides the slide
+     track, so this was redundant, and it cropped the 3px offset shadow off
+     the prev/next buttons that sit inside this box. */
+
   &__content {
     width: 100%;
     overflow: hidden;

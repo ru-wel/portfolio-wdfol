@@ -44,8 +44,8 @@ const Projects = () => {
             whileInView="visible"
             viewport={revealViewport}
           >
-              {projects.map((project) =>
-                <ProjectCard key={project.slug} project={project} />
+              {projects.map((project, index) =>
+                <ProjectCard key={project.slug} project={project} index={index} />
               )}
             </motion.div>
           </section>

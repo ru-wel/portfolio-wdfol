@@ -1,15 +1,12 @@
-import { motion, useReducedMotion } from 'motion/react';
+import { Link } from 'react-router-dom';
 
 import Nav from './Nav';
 import ProfileCard from './ProfileCard.jsx';
-import ProjectCard from './ProjectCard.jsx';
+import FeaturedProject from './FeaturedProject.jsx';
 import "../assets/styles/home.scss";
 import projects from '../assets/projects';
-import { revealGroup, revealViewport } from './reveal';
 
 const Home = () => {
-
-  const reduceMotion = useReducedMotion();
 
   return(
     <div className='container'>
@@ -35,19 +32,13 @@ const Home = () => {
         </section>
 
         <section className="projects" aria-labelledby="home-projects-heading">
-          <h2 id="home-projects-heading">Featured projects</h2>
+          <h2 id="home-projects-heading">Latest project</h2>
 
-          <motion.div
-            className="projectcards"
-            variants={revealGroup}
-            initial={reduceMotion ? false : 'hidden'}
-            whileInView="visible"
-            viewport={revealViewport}
-          >
-            {projects.slice(0,2).map((project) =>
-              <ProjectCard key={project.slug} project={project} />
-            )}
-          </motion.div>
+          <FeaturedProject project={projects[0]} />
+
+          <Link to="/projects" className="projects-all-link">
+            See all {projects.length} projects
+          </Link>
 
         </section>
       </main>

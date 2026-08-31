@@ -89,12 +89,11 @@ const Contact = () => {
             <h2>Contact form</h2>
 
             <div className="field">
-              <label className="sr-only" htmlFor="contact-name">Name</label>
+              <label htmlFor="contact-name">Name</label>
               <input
                 id="contact-name"
                 type="text"
                 name="name"
-                placeholder='Name'
                 className={`input ${fieldErrors.name ? 'has-error' : ''}`}
                 aria-invalid={Boolean(fieldErrors.name)}
                 aria-describedby={fieldErrors.name ? 'contact-name-error' : undefined}
@@ -104,12 +103,11 @@ const Contact = () => {
             </div>
 
             <div className="field">
-              <label className="sr-only" htmlFor="contact-email">Email</label>
+              <label htmlFor="contact-email">Email</label>
               <input
                 id="contact-email"
                 type="email"
                 name="email"
-                placeholder='Email'
                 className={`input ${fieldErrors.email ? 'has-error' : ''}`}
                 aria-invalid={Boolean(fieldErrors.email)}
                 aria-describedby={fieldErrors.email ? 'contact-email-error' : undefined}
@@ -119,13 +117,12 @@ const Contact = () => {
             </div>
 
             <div className="field">
-              <label className="sr-only" htmlFor="contact-message">Message</label>
+              <label htmlFor="contact-message">Message</label>
               <textarea
                 id="contact-message"
                 name="message"
                 rows={5}
                 className={`message-input ${fieldErrors.message ? 'has-error' : ''}`}
-                placeholder='Message'
                 aria-invalid={Boolean(fieldErrors.message)}
                 aria-describedby={fieldErrors.message ? 'contact-message-error' : undefined}
               />

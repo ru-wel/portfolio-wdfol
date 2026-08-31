@@ -3,8 +3,8 @@ import { motion } from 'motion/react';
 
 import { revealItem } from './reveal';
 
-const ProjectCard = ({ project }) => (
-  <motion.article className="card" variants={revealItem}>
+const ProjectCard = ({ project, index = 0 }) => (
+  <motion.article className="card" variants={revealItem} custom={index}>
     <Link to={`/projects/${project.slug}`} tabIndex={-1} aria-hidden="true">
       <img src={project.image} alt="" width={279} height={173} loading="lazy" />
     </Link>
