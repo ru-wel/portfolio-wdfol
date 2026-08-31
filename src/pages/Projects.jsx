@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-
 import Nav from './Nav';
 import ProfileCard from './ProfileCard.jsx';
+import ProjectCard from './ProjectCard.jsx';
+import "../assets/styles/home.scss";
 import projects from '../assets/projects';
 
 const Projects = () => {
@@ -10,13 +10,13 @@ const Projects = () => {
       <Nav logo={'images/wel-logo-final.png'}/>
       <ProfileCard />
 
-        <div className="home-card">
+        <main id="main-content" className="home-card">
 
-          <div className="window">
+          <section className="window" aria-labelledby="projects-heading">
 
             <div className="window-header">
-                <h1 className="window-title">Projects</h1>
-                <div className="window-controls">
+                <h1 id="projects-heading" className="window-title">Projects</h1>
+                <div className="window-controls" aria-hidden="true">
                     <div className="control-dot"></div>
                     <div className="control-dot"></div>
                     <div className="control-dot"></div>
@@ -24,29 +24,21 @@ const Projects = () => {
             </div>
 
             <div className="window-content">
-              <p>Throughout my three (3) years of studying Web Development, these have been some of the projects that I have created so far! These range from Client Projects to School Works, while also taking up both <span>frontend and backend</span> roles during the development process.</p>
+              <p>Throughout my three (3) years of studying Web Development, these have been some of the projects that I have created so far. These range from client projects to school work, while also taking up both <span>frontend and backend</span> roles during the development process.</p>
             </div>
-          </div>
+          </section>
 
-          <div className="projects">
-            <h2>Featured Projects (Latest - Oldest)</h2>
+          <section className="projects" aria-labelledby="projects-list-heading">
+            <h2 id="projects-list-heading">All projects, newest first</h2>
 
             <div className="projectcards">
-              {projects.map((project) => 
-                <div className="card" key={project.slug}>
-                  <Link to={`/projects/${project.slug}`}>
-                    <img src={project.image} alt={project.title} width="279px" height="173px" />
-                  </Link>
-                  <Link to={`/projects/${project.slug}`} className='project-link'>
-                    <h3>{project.title}</h3>
-                  </Link>
-                  <p>{project.description}</p>
-                </div>
+              {projects.map((project) =>
+                <ProjectCard key={project.slug} project={project} />
               )}
             </div>
-          </div>
-        </div>
-        
+          </section>
+        </main>
+
       </div>
     );
 }

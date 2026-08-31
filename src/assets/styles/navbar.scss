@@ -1,6 +1,7 @@
 nav {
-  font-family: 'Px Grotesk';
+  font-family: 'Px Grotesk', sans-serif;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
   display: flex;
   flex-direction: column;
   margin-right: 8px;
@@ -8,42 +9,62 @@ nav {
   left: 10px;
   float: left;
   width: 75px;
-  z-index: 100;
+  z-index: var(--z-nav);
   text-align: center;
   opacity: 1;
   visibility: visible;
-  background-color: #F3EDEA;
+  background-color: var(--paper);
 
   .nav-logo{
     display: none;
   }
 
-  .nav-items{
-    div {
-      border: 1px solid black;
+  .nav-items {
+    .nav-link {
+      border: 1px solid var(--ink);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 1rem;
-      
-      i{
-        transition: fill 0.2s ease;
-        font-size: 25px;
+      gap: 0.35rem;
+      padding: 1rem 0.5rem;
+      font-size: 12px;
+      font-weight: 500;
+      position: relative;
+      transition: color var(--speed) var(--ease),
+        background-color var(--speed) var(--ease),
+        transform var(--speed) var(--ease);
+
+      i {
+        font-size: 23px;
+        transition: transform var(--speed) var(--ease);
       }
-  
-      a {
-        transition: color 0.2s ease;
-        font-size: 14px;
-      }
-  
+
       &:hover {
+        color: var(--accent);
+
         i {
-          fill: #2CCF76;
+          transform: translateY(-1px);
         }
-  
-        a {
-          color: #2CCF76;
+      }
+
+      &:active {
+        transform: translateY(1px);
+      }
+
+      /* Current page is stated, not guessed at. */
+      &.is-active {
+        background-color: var(--ink);
+        color: var(--paper);
+
+        &::after {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          width: 3px;
+          background-color: var(--accent);
         }
       }
     }
@@ -52,10 +73,22 @@ nav {
   .hamburger {
     display: none;
     font-size: 24px;
+    line-height: 1;
+    padding: 0.4rem 0.6rem;
     background: none;
-    border: none;
+    border: 1px solid transparent;
     cursor: pointer;
-    color: #000;
+    color: var(--ink);
+    transition: border-color var(--speed) var(--ease),
+      transform var(--speed) var(--ease);
+
+    &:hover {
+      border-color: var(--ink);
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
   }
 
   // tablet / mobile nav styles
@@ -67,21 +100,31 @@ nav {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: var(--z-nav);
+    box-shadow: 0 2px 10px rgba(46, 26, 79, 0.16);
     padding: 1rem;
     
     .nav-logo{
       display: block;
     }
 
-    .nav-items{
+    .nav-items {
       display: flex;
       flex-direction: row;
 
-      div{
-        max-width: 75px;
-        max-height: 83px;
+      .nav-link {
+        min-width: 72px;
+        max-width: 82px;
+      }
+
+      /* The active marker runs along the bottom once the bar is horizontal. */
+      .nav-link.is-active::after {
+        top: auto;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: auto;
+        height: 3px;
       }
     }
   }
@@ -96,8 +139,8 @@ nav {
       top: 100%;
       left: 0;
       width: 100%;
-      background-color: #F3EDEA;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      background-color: var(--paper);
+      box-shadow: 0 2px 10px rgba(46, 26, 79, 0.16);
       opacity: 0;
       visibility: hidden;
       transform: translateY(-1rem);

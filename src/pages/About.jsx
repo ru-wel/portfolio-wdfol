@@ -25,8 +25,6 @@ const About = () => {
       } else {
         window.open(certificate.url, '_blank', 'noopener,noreferrer');
       }
-    } else {
-      console.warn('No URL provided for this action');
     }
   };
 
@@ -81,37 +79,39 @@ const About = () => {
       <Nav logo={'images/wel-logo-final.png'}/>
       <ProfileCard />
 
-      <div className="home-card">
+      <main id="main-content" className="home-card">
 
-        <div className="window">
+        <section className="window" aria-labelledby="about-heading">
           <div className="window-header">
-              <h1 className="window-title">About</h1>
-              <div className="window-controls">
+              <h1 id="about-heading" className="window-title">About</h1>
+              <div className="window-controls" aria-hidden="true">
                   <div className="control-dot"></div>
                   <div className="control-dot"></div>
                   <div className="control-dot"></div>
               </div>
           </div>
           <div className="window-content">
-            <h2>Personal Bio</h2>
+            <h2 className="bio-heading">Personal bio</h2>
             <p className="personal-bio">I am currently a 3rd Year Web Development Student with a strong passion for anything technology related. Being exposed to different gadgets from an early age sparked my genuine curiosity for all things technology and ultimately led me to this course / field. Beyond coding, I enjoy watching movies, listening to music, and engaging in various sports activities. In addition, I try to continuously explore new technologies and best practices related to Web Development to enhance my skills and prepare myself for the future.</p>
           </div>
-        </div>
+        </section>
 
-        <div className="projects skills">
-          <h2>Technical Skills</h2>
+        <section className="projects skills" aria-labelledby="skills-heading">
+          <h2 id="skills-heading">Technical skills</h2>
 
           <div className="technical-skills">
-            {skills.map((category, index) => (
-              <div key={index} className="skills-section">
+            {skills.map((category) => (
+              <div key={category.category} className="skills-section">
                 <h3 className="category-title">{category.category}</h3>
                 <div className="skills-container">
-                  {category.skills.map((skill, idx) => (
-                    <div key={idx} className="skill">
-                      <ProgressProvider valueStart={0} valueEnd={skill.progress}>
-                        {value => <CircularProgressbar value={value} text={`${value}%`} />}
-                      </ProgressProvider>
-                      <p>{skill.name}</p>
+                  {category.skills.map((skill) => (
+                    <div key={skill.name} className="skill">
+                      <div role="img" aria-label={`${skill.name}: ${skill.progress} percent confidence`}>
+                        <ProgressProvider valueStart={0} valueEnd={skill.progress}>
+                          {value => <CircularProgressbar value={value} text={`${value}%`} />}
+                        </ProgressProvider>
+                      </div>
+                      <p aria-hidden="true">{skill.name}</p>
                     </div>
                   ))}
                 </div>
@@ -119,29 +119,35 @@ const About = () => {
             ))}
           </div>
 
-        </div>
-        
-      </div>
+        </section>
+
+      </main>
 
     </div>
 
-    <div className="certificate-container">
-      <h1>Certifications and Trainings</h1>
+    <section className="certificate-container" aria-labelledby="certificates-heading">
+      <h2 id="certificates-heading">Certifications and trainings</h2>
       <motion.div ref={ref} className="certificate-cards" initial="hidden" animate={inView ? "visible" : "hidden"} variants={containerVariants}>
         {certificates.map((certificate, index) => (
-          <motion.div className="card" key={index} variants={cardVariants} custom={index} >
+          <motion.article className="card" key={certificate.title} variants={cardVariants} custom={index} >
             <motion.div className="certificate-logo" variants={imageVariants}>
-              <img src={certificate.image} alt={certificate.company} width="150px" height="150px"/>
+              <img src={certificate.image} alt={`${certificate.company} logo`} width={150} height={150} loading="lazy"/>
             </motion.div>
             <motion.h3>{certificate.company}</motion.h3>
             <motion.p>{certificate.title}</motion.p>
-            <button className='button-confirm' onClick={() => handleAction(certificate)}>
+            <button
+              type="button"
+              className='button-confirm'
+              onClick={() => handleAction(certificate)}
+              disabled={!certificate.url}
+              aria-label={`${certificate.action}: ${certificate.title} from ${certificate.company}`}
+            >
               {certificate.action}
             </button>
-          </motion.div>
+          </motion.article>
         ))}
       </motion.div>
-    </div>
+    </section>
     </>
   );
 }

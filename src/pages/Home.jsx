@@ -1,7 +1,6 @@
-import { Link } from 'react-router-dom';
-
 import Nav from './Nav';
 import ProfileCard from './ProfileCard.jsx';
+import ProjectCard from './ProjectCard.jsx';
 import "../assets/styles/home.scss";
 import projects from '../assets/projects';
 
@@ -12,43 +11,35 @@ const Home = () => {
       <Nav logo={'images/wel-logo-final.png'}/>
       <ProfileCard />
 
-      <div className="home-card">
+      <main id="main-content" className="home-card">
 
-        <div className="window">
+        <section className="window" aria-labelledby="home-heading">
             <div className="window-header">
-                <h1 className="window-title">Home</h1>
-                <div className="window-controls">
+                <h1 id="home-heading" className="window-title">Home</h1>
+                <div className="window-controls" aria-hidden="true">
                     <div className="control-dot"></div>
                     <div className="control-dot"></div>
                     <div className="control-dot"></div>
                 </div>
             </div>
             <div className="window-content">
-              <p><span>Hello! I’m Reuel Christian Sundiam.</span></p>
+              <p><span>Hello! I&rsquo;m Reuel Christian Sundiam.</span></p>
               <p>I am a passionate learner who loves exploring technology—leading to my interest in both <span>frontend</span> and <span>backend development</span> and dream of becoming a full-stack developer. I am eager to keep learning and growing to achieve my goals and make a difference in the tech world.</p>
-              <p><span className='tagline'>— &quot;Good Things Come One Line At A Time&quot;</span></p>
+              <p><span className='tagline'>— &quot;Good things come one line at a time&quot;</span></p>
             </div>
-        </div>
+        </section>
 
-        <div className="projects">
-          <h2>Featured Projects</h2>
+        <section className="projects" aria-labelledby="home-projects-heading">
+          <h2 id="home-projects-heading">Featured projects</h2>
 
           <div className="projectcards">
-            {projects.slice(0,2).map((project) => 
-              <div className="card" key={project.slug}>
-                <Link to={`/projects/${project.slug}`}>
-                  <img src={project.image} alt={project.title} width="279px" height="173px" />
-                </Link>
-                <Link to={`/projects/${project.slug}`} className='project-link'>
-                  <h3>{project.title}</h3>
-                </Link>
-                <p>{project.description}</p>
-              </div>
+            {projects.slice(0,2).map((project) =>
+              <ProjectCard key={project.slug} project={project} />
             )}
           </div>
 
-        </div>
-      </div>
+        </section>
+      </main>
     </div>
   );
 }

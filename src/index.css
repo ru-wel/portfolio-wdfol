@@ -1,26 +1,95 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css');
 @import url('https://fonts.cdnfonts.com/css/px-sans-nouveaux');
-@import url('https://db.onlinewebfonts.com/c/9527a4c4f55e8075eb6a60fe577d89c4?family=Px+Grotesk+Regular');
+
+/* FONTS
+   Local Px Grotesk faces. The family name must be a bare string (no fallback
+   list) and TTF must be declared as format("truetype") — both were wrong
+   before, which made every face fail silently and drop the page to a system
+   default. */
 
 @font-face {
-  font-family: 'Px Grotesk', sans-serif;
-  src: url('./fonts/Px-Grotesk-Regular.ttf')  format("ttf");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Px Grotesk', sans-serif;
-  src: url('./fonts/Px-Grotesk-Light.ttf') format("ttf");
+  font-family: 'Px Grotesk';
+  src: url('./fonts/Px-Grotesk-Light.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'Px Grotesk', sans-serif;
-  src: url('./fonts/Px-Grotesk-Bold.ttf') format("ttf");
+  font-family: 'Px Grotesk';
+  src: url('./fonts/Px-Grotesk-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Px Grotesk';
+  src: url('./fonts/Px-Grotesk-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
+}
+
+/* Synthesised mid weights so hierarchy isn't stuck between 400 and 700. */
+@font-face {
+  font-family: 'Px Grotesk';
+  src: url('./fonts/Px-Grotesk-Regular.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Px Grotesk';
+  src: url('./fonts/Px-Grotesk-Bold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* TOKENS */
+
+:root {
+  /* Surfaces — one warm family, no cool/warm gray mixing. */
+  --paper: #f3edea;
+  --paper-sunk: #ece4df;
+  --paper-raised: #fbf8f6;
+
+  /* Ink — warm off-black instead of pure #000. */
+  --ink: #14100f;
+  --ink-soft: #4a4340;
+  --ink-faint: #8a807b;
+
+  /* One dark surface + one accent. Purple is structure, green is the accent. */
+  --deep: #2e1a4f;
+  --deep-tint: rgba(46, 26, 79, 0.28);
+  --accent: #2bbd6f;
+  --accent-press: #229d5c;
+
+  /* Shadows carry the surface hue rather than flat black. */
+  --shadow-hard: 4px 4px 0 rgba(20, 16, 15, 0.9);
+  --shadow-hard-sm: 3px 3px 0 rgba(20, 16, 15, 0.9);
+  --shadow-lift: -15px -17px 7.7px var(--deep-tint);
+  --shadow-soft: 0 6px 18px rgba(46, 26, 79, 0.14);
+
+  --radius-sm: 2px;
+  --radius-md: 5px;
+  --radius-lg: 10px;
+
+  --measure: 65ch;
+  --shell-max: 1440px;
+
+  --speed: 220ms;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  --z-base: 1;
+  --z-raised: 10;
+  --z-nav: 100;
+  --z-overlay: 200;
+  --z-skip: 300;
+
+  color-scheme: light;
 }
 
 /* RESET */
@@ -38,10 +107,27 @@
 }
 
 html {
-  /* font-size: 62.5%; 1 rem = 10px  */
-  font-family: 'Px Grotesk';
-  color: #000000;
-  background-color: #F3EDEA;
+  font-family: 'Px Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  background-color: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  position: relative;
+  min-height: 100dvh;
+}
+
+/* Grain overlay — breaks the flatness of a single cream field. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 img {
@@ -55,11 +141,100 @@ li {
 
 a {
   text-decoration: none;
-  color: inherit
+  color: inherit;
 }
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* TYPOGRAPHY */
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+  letter-spacing: -0.015em;
+}
+
+h1 {
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Percentages, counts and dates read straight down the column. */
+.CircularProgressbar-text,
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* FOCUS — visible keyboard ring everywhere, not just where a component
+   happens to define one. */
+
+:focus-visible {
+  outline: 2px solid var(--deep);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* SCREEN-READER ONLY */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* SKIP LINK */
+
+.skip-link {
+  position: absolute;
+  left: 0.5rem;
+  top: -4rem;
+  z-index: var(--z-skip);
+  padding: 0.7rem 1rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: top var(--speed) var(--ease);
+}
+
+.skip-link:focus-visible {
+  top: 0.5rem;
+}
+
+/* MOTION */
 
 @media (prefers-reduced-motion: no-preference) {
   html {
-    scroll-behavior: smooth; /* smooth scrolling */
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

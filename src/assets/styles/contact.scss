@@ -1,9 +1,9 @@
 .form {
-  --input-focus: #2CCF76;
-  --font-color: #323232;
-  --font-color-sub: #666;
-  --bg-color: #fff;
-  --main-color: #323232;
+  --input-focus: var(--accent);
+  --font-color: var(--ink);
+  --font-color-sub: var(--ink-faint);
+  --bg-color: var(--paper-raised);
+  --main-color: var(--ink);
 
   padding: 2rem;
   display: flex;
@@ -11,13 +11,40 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  border: 2px solid #000;
+  border: 2px solid var(--ink);
   margin: auto;
   transition: all 0.2s;
 
   h2 {
     border-top: none !important;
     padding: 0.2rem !important;
+    align-self: flex-start;
+  }
+
+  .field {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .field-error {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #9c2b2b;
+  }
+
+  .has-error {
+    border-color: #9c2b2b !important;
+    box-shadow: 3px 3px #9c2b2b !important;
+  }
+
+  .form-status {
+    min-height: 1.4rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    max-width: var(--measure);
+    align-self: flex-start;
   }
 
   .input,
@@ -26,17 +53,17 @@
     padding: 12px;
     border-radius: 5px;
     border: 2px solid var(--main-color);
-    box-shadow: 4px 4px black;
+    box-shadow: var(--shadow-hard);
     background-color: var(--bg-color);
     font-size: 16px;
     font-family: 'Px Grotesk';
-    color: #000;
+    color: var(--ink);
     outline: none;
     transition: all 0.2s ease-in-out;
   }
 
   &:hover {
-    box-shadow: 4px 4px black;
+    box-shadow: var(--shadow-hard);
     transform: scale(1.01);
   }
 
@@ -70,17 +97,24 @@
     font-family: 'Px Grotesk';
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-    color: #000;
+    color: var(--ink);
   }
 
-  .button-confirm:hover {
+  .button-confirm:hover:not(:disabled) {
     background-color: var(--input-focus);
     box-shadow: 3px 3px var(--input-focus);
   }
 
-  .button-confirm:active {
+  .button-confirm:active:not(:disabled) {
     box-shadow: none;
     transform: translateY(3px);
+  }
+
+  .button-confirm:disabled {
+    cursor: progress;
+    opacity: 0.6;
+    box-shadow: none;
+    transform: translateY(2px);
   }
 }
 
