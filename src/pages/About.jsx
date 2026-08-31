@@ -1,8 +1,7 @@
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-import { motion } from "motion/react";
-import { useInView } from 'react-intersection-observer';
+import { motion, useReducedMotion } from "motion/react";
 
 import Nav from './Nav';
 import ProfileCard from './ProfileCard.jsx';
@@ -10,6 +9,7 @@ import "../assets/styles/about.scss";
 import skills from '../assets/skills';
 import ProgressProvider from "./ProgressProvider";
 import certificates from "../assets/certificates.js";
+import { revealGroup, revealItem, revealViewport } from "./reveal";
 
 const About = () => {
 
@@ -28,50 +28,7 @@ const About = () => {
     }
   };
 
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      }
-    }
-  };
-
-  const cardVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 50,
-      scale: 0.9
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const imageVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
-      transition: { 
-        delay: 0.2, 
-        duration: 0.4 
-      }
-    }
-  };
+  const reduceMotion = useReducedMotion();
 
   return(
     <>
@@ -127,14 +84,20 @@ const About = () => {
 
     <section className="certificate-container" aria-labelledby="certificates-heading">
       <h2 id="certificates-heading">Certifications and trainings</h2>
-      <motion.div ref={ref} className="certificate-cards" initial="hidden" animate={inView ? "visible" : "hidden"} variants={containerVariants}>
-        {certificates.map((certificate, index) => (
-          <motion.article className="card" key={certificate.title} variants={cardVariants} custom={index} >
-            <motion.div className="certificate-logo" variants={imageVariants}>
+      <motion.div
+        className="certificate-cards"
+        variants={revealGroup}
+        initial={reduceMotion ? false : "hidden"}
+        whileInView="visible"
+        viewport={revealViewport}
+      >
+        {certificates.map((certificate) => (
+          <motion.article className="card" key={certificate.title} variants={revealItem}>
+            <div className="certificate-logo">
               <img src={certificate.image} alt={`${certificate.company} logo`} width={150} height={150} loading="lazy"/>
-            </motion.div>
-            <motion.h3>{certificate.company}</motion.h3>
-            <motion.p>{certificate.title}</motion.p>
+            </div>
+            <h3>{certificate.company}</h3>
+            <p>{certificate.title}</p>
             <button
               type="button"
               className='button-confirm'

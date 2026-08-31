@@ -1,10 +1,15 @@
+import { motion, useReducedMotion } from 'motion/react';
+
 import Nav from './Nav';
 import ProfileCard from './ProfileCard.jsx';
 import ProjectCard from './ProjectCard.jsx';
 import "../assets/styles/home.scss";
 import projects from '../assets/projects';
+import { revealGroup, revealViewport } from './reveal';
 
 const Home = () => {
+
+  const reduceMotion = useReducedMotion();
 
   return(
     <div className='container'>
@@ -32,11 +37,17 @@ const Home = () => {
         <section className="projects" aria-labelledby="home-projects-heading">
           <h2 id="home-projects-heading">Featured projects</h2>
 
-          <div className="projectcards">
+          <motion.div
+            className="projectcards"
+            variants={revealGroup}
+            initial={reduceMotion ? false : 'hidden'}
+            whileInView="visible"
+            viewport={revealViewport}
+          >
             {projects.slice(0,2).map((project) =>
               <ProjectCard key={project.slug} project={project} />
             )}
-          </div>
+          </motion.div>
 
         </section>
       </main>
