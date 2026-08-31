@@ -1,5 +1,5 @@
 .skills{
-  border: 2px solid var(--ink);
+  border: var(--border-default) solid var(--ink);
   border-top: none;
   border-radius: var(--radius-surface);
   transition: box-shadow var(--speed) var(--ease), transform var(--speed) var(--ease);
@@ -18,8 +18,8 @@
         font-size: var(--text-base);
         font-weight: bold;
         padding: var(--space-2) 0;
-        border-top: 1px solid var(--ink);
-        border-bottom: 1px solid var(--ink);
+        border-top: var(--border-divider) solid var(--ink);
+        border-bottom: var(--border-divider) solid var(--ink);
         text-align: left;
         padding: var(--space-3);
       }
@@ -86,11 +86,17 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  /* Same shell as .container. Without this the section ran full-bleed
+     while every other block on the site stopped at 1440px. */
+  width: 100%;
+  max-width: var(--shell-max);
+  margin-inline: auto;
+  padding: var(--space-8) var(--space-4);
 
   h2{
     text-align: center;
-    border-top: 1px solid var(--ink);
-    border-bottom: 1px solid var(--ink);
+    border-top: var(--border-divider) solid var(--ink);
+    border-bottom: var(--border-divider) solid var(--ink);
     margin-bottom: var(--space-4);
     padding: var(--space-2);
     width: 100%;
@@ -104,17 +110,16 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: var(--space-4);
-    padding: 0 var(--space-4);
-    width: 80%;
-    max-width: 1300px;
-    margin-bottom: var(--space-4);
+    width: 100%;
 
+    /* auto-fit already drops to one column here; the old 320px cap just
+       squeezed the cards into a narrow strip. */
     @media (max-width: 685px) {
-      max-width: 320px;
+      grid-template-columns: 1fr;
     }
 
     .card {
-      border: 2px solid var(--ink);
+      border: var(--border-default) solid var(--ink);
       transition: all 0.2s;
       display: flex;
       flex-direction: column;
@@ -141,12 +146,12 @@
 
       h3 {
         font-weight: 400;
-        border-top: 1px solid var(--ink);
+        border-top: var(--border-divider) solid var(--ink);
         padding: var(--space-2) var(--space-2);
       }
 
       p {
-        border-top: 1px solid var(--ink);
+        border-top: var(--border-divider) solid var(--ink);
         padding: var(--space-2);
         font-weight: 300;
       }
@@ -156,8 +161,8 @@
         max-width: 400px;
         height: 45px;
         border-radius: var(--radius-control);
-        border: 2px solid var(--ink);
-        background-color: var(--paper-raised);
+        border: var(--border-default) solid var(--ink);
+        background-color: var(--paper);
         box-shadow: var(--shadow-hard-sm);
         font-size: var(--text-base);
         font-weight: 700;
@@ -188,7 +193,7 @@
 
       .button-confirm:hover:not(:disabled) {
         background-color: var(--accent);
-        box-shadow: 3px 3px var(--accent);
+        box-shadow: var(--shadow-hard-accent);
       }
     
       .button-confirm:active:not(:disabled) {
@@ -206,7 +211,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 1px var(--ink-faint); 
+  box-shadow: var(--shadow-inset-track);
   border-radius: var(--radius-control);
 }
 

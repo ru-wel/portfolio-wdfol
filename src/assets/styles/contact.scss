@@ -1,17 +1,11 @@
 .form {
-  --input-focus: var(--accent);
-  --font-color: var(--ink);
-  --font-color-sub: var(--ink-faint);
-  --bg-color: var(--paper-raised);
-  --main-color: var(--ink);
-
   padding: var(--space-6);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: var(--space-4);
-  border: 2px solid var(--ink);
+  border: var(--border-default) solid var(--ink);
   margin: auto;
   transition: all 0.2s;
 
@@ -31,12 +25,12 @@
   .field-error {
     font-size: var(--text-sm);
     font-weight: 500;
-    color: #9c2b2b;
+    color: var(--danger);
   }
 
   .has-error {
-    border-color: #9c2b2b !important;
-    box-shadow: 3px 3px #9c2b2b !important;
+    border-color: var(--danger) !important;
+    box-shadow: var(--shadow-hard-danger) !important;
   }
 
   .form-status {
@@ -52,9 +46,9 @@
     width: 100%;
     padding: var(--space-3);
     border-radius: var(--radius-control);
-    border: 2px solid var(--main-color);
+    border: var(--border-default) solid var(--ink);
     box-shadow: var(--shadow-hard);
-    background-color: var(--bg-color);
+    background-color: var(--paper-sunk);
     font-size: var(--text-base);
     font-family: 'Px Grotesk';
     color: var(--ink);
@@ -69,14 +63,14 @@
 
   .input::placeholder,
   .message-input::placeholder {
-    color: var(--font-color-sub);
-    opacity: 0.8;
+    color: var(--ink-soft);
+    opacity: 1;
   }
 
   .input:focus,
   .message-input:focus {
-    border: 2px solid var(--input-focus);
-    box-shadow: 3px 3px var(--input-focus);
+    border: var(--border-default) solid var(--accent);
+    box-shadow: var(--shadow-hard-accent);
   }
 
   .message-input {
@@ -89,9 +83,9 @@
     max-width: 400px;
     height: 45px;
     border-radius: var(--radius-control);
-    border: 2px solid var(--main-color);
-    background-color: var(--bg-color);
-    box-shadow: 3px 3px var(--main-color);
+    border: var(--border-default) solid var(--ink);
+    background-color: var(--paper);
+    box-shadow: var(--shadow-hard-sm);
     font-size: var(--text-base);
     font-weight: 700;
     font-family: 'Px Grotesk';
@@ -101,8 +95,8 @@
   }
 
   .button-confirm:hover:not(:disabled) {
-    background-color: var(--input-focus);
-    box-shadow: 3px 3px var(--input-focus);
+    background-color: var(--accent);
+    box-shadow: var(--shadow-hard-accent);
   }
 
   .button-confirm:active:not(:disabled) {
@@ -124,7 +118,7 @@
   .form {
     padding: var(--space-5);
     width: 100%;
-    box-shadow: 2px 2px var(--main-color);
+    box-shadow: var(--shadow-hard-sm);
   }
 
   .input,

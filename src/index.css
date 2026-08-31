@@ -60,8 +60,10 @@
 :root {
   /* Surfaces — one warm family, no cool/warm gray mixing. */
   --paper: #f3edea;
-  --paper-sunk: #ece4df;
-  --paper-raised: #fbf8f6;
+  /* Recessed fill for form fields. 1.24:1 against --paper, which is the
+     point where the step becomes visible; the old #ece4df sat at 1.08:1
+     and read as the same colour. */
+  --paper-sunk: #e0d5cd;
 
   /* Ink — warm off-black instead of pure #000. */
   --ink: #14100f;
@@ -70,15 +72,25 @@
 
   /* One dark surface + one accent. Purple is structure, green is the accent. */
   --deep: #2e1a4f;
-  --deep-tint: rgba(46, 26, 79, 0.28);
+  --deep-mute: rgba(46, 26, 79, 0.22);
+  --deep-mute-strong: rgba(46, 26, 79, 0.45);
   --accent: #2bbd6f;
   --accent-press: #229d5c;
+
+  /* Form error state. Warm red, same family as the ink. */
+  --danger: #9c2b2b;
 
   /* Shadows carry the surface hue rather than flat black. */
   --shadow-hard: 4px 4px 0 rgba(20, 16, 15, 0.9);
   --shadow-hard-sm: 3px 3px 0 rgba(20, 16, 15, 0.9);
-  --shadow-lift: -15px -17px 7.7px var(--deep-tint);
-  --shadow-soft: 0 6px 18px rgba(46, 26, 79, 0.14);
+  --shadow-hard-accent: 3px 3px 0 var(--accent);
+  --shadow-hard-danger: 3px 3px 0 var(--danger);
+  /* Inset outlines: a hairline drawn inside the box rather than around it. */
+  --shadow-inset-hairline: inset 0 0 0 1px var(--ink);
+  --shadow-inset-track: inset 0 0 1px var(--ink-faint);
+  /* Elevation has ONE language: the hard offset block. Blurred lift,
+     ambient and badge shadows were three more, all saying the same thing
+     in different accents. Separation is borders' job; texture is grain's. */
 
   /* SPACING — 4px base. Every padding, gap and margin comes from here. */
   --space-1: 0.25rem;
@@ -93,6 +105,19 @@
 
   /* Clearance for the fixed mobile nav bar. Not a spacing step. */
   --nav-clearance: 150px;
+
+  /* BORDERS — three steps, by emphasis. Width encodes how much weight an
+     edge should carry, NOT how deeply it is nested:
+       strong   3px  edges that frame a whole block of the page, plus the
+                     logo badge, which is deliberately heavy where it
+                     overlaps the photo
+       default  2px  ordinary surface and control edges: windows, project
+                     and certificate cards, inputs, buttons
+       divider  1px  rules inside a surface (header underlines, cell edges)
+     Nothing uses a fourth width. */
+  --border-strong: 3px;
+  --border-default: 2px;
+  --border-divider: 1px;
 
   /* RADIUS — the rule, in full:
        surface  0     panels, windows, cards, nav cells (anything that tiles

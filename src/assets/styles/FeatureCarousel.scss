@@ -32,7 +32,7 @@
   }
   
   &__arrow {
-    border: 1px solid var(--ink);
+    border: var(--border-divider) solid var(--ink);
     font-size: 1.4rem;
     /* Optical: the arrow glyph sits high in its box. */
     line-height: 1;
@@ -44,8 +44,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--paper-raised);
-    box-shadow: var(--shadow-soft);
+    background-color: var(--paper);
+    box-shadow: var(--shadow-hard-sm);
     transition: background-color var(--speed) var(--ease),
       transform var(--speed) var(--ease),
       box-shadow var(--speed) var(--ease);
@@ -85,7 +85,7 @@
       width: 10px;
       height: 10px;
       border-radius: var(--radius-round);
-      background-color: rgba(46, 26, 79, 0.22);
+      background-color: var(--deep-mute);
       transition: background-color var(--speed) var(--ease),
         transform var(--speed) var(--ease);
     }
@@ -96,7 +96,7 @@
     }
 
     &:hover:not(.active)::before {
-      background-color: rgba(46, 26, 79, 0.45);
+      background-color: var(--deep-mute-strong);
     }
   }
 }
@@ -110,8 +110,7 @@
   &__image {
     flex: 1;
     border-radius: var(--radius-media);
-    border: 1px solid var(--ink);
-    box-shadow: var(--shadow-soft);
+    border: var(--border-divider) solid var(--ink);
     overflow: hidden;
     
     img {
@@ -139,7 +138,7 @@
     letter-spacing: -0.02em;
     position: relative;
     padding-bottom: var(--space-1);
-    border-bottom: 1px solid var(--ink);
+    border-bottom: var(--border-divider) solid var(--ink);
   }
 
   &__description {
