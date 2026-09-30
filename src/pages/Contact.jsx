@@ -1,14 +1,16 @@
 import { useRef, useState } from 'react';
 
 import emailjs from '@emailjs/browser';
-import ProfileCard from './ProfileCard.jsx';
 import "../assets/styles/contact.scss";
+import { usePageTitle } from './usePageTitle';
+import Icon from './Icon';
+import SocialLinks from './SocialLinks';
 
-import Nav from "./Nav";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 const Contact = () => {
+  usePageTitle('Contact');
 
   // emailjs config
   const form = useRef();
@@ -39,8 +41,12 @@ const Contact = () => {
 
     const errors = validate(new FormData(form.current));
     setFieldErrors(errors);
-    if (Object.keys(errors).length > 0) {
+    const invalid = Object.keys(errors);
+    if (invalid.length > 0) {
       setStatus('idle');
+      // Take keyboard and screen-reader users to the first field to fix;
+      // its error is wired up through aria-describedby, so it is read out.
+      form.current.elements[invalid[0]]?.focus();
       return;
     }
 
@@ -64,15 +70,11 @@ const Contact = () => {
   const isSending = status === 'sending';
 
   return(
-    <div className="container">
-      <Nav logo={'images/wel-logo-final.png'}/>
-      <ProfileCard />
-
       <main id="main-content" className="home-card">
 
         <section className="window" aria-labelledby="contact-heading">
           <div className="window-header">
-              <h1 id="contact-heading" className="window-title">Contact</h1>
+              <p className="window-title" aria-hidden="true">contact</p>
               <div className="window-controls" aria-hidden="true">
                   <div className="control-dot"></div>
                   <div className="control-dot"></div>
@@ -80,7 +82,9 @@ const Contact = () => {
               </div>
           </div>
           <div className="window-content">
-            <p>I am always open to new opportunities and collaborations. If you have something in mind or any questions, feel free to contact me. We can discuss how we can work together to make your project a success. Feel free to reach out.<span> This form sends the message straight to my email.</span></p>
+            <h1 id="contact-heading" className="hero">Hiring, or have a process that should run itself?</h1>
+            <p>I&rsquo;m open to full-stack, automation and AI-integration roles, and to freelance web projects. Send me a message and it goes straight to my inbox, or reach me directly:</p>
+            <SocialLinks />
           </div>
         </section>
 
@@ -130,7 +134,7 @@ const Contact = () => {
             </div>
 
             <button type="submit" className='button-confirm' disabled={isSending}>
-              {isSending ? 'Sending…' : 'Send message →'}
+              {isSending ? 'Sending…' : <>Send message <Icon name="arrow-right" /></>}
             </button>
 
             <p className="form-status" role="status" aria-live="polite">
@@ -140,8 +144,6 @@ const Contact = () => {
           </form>
         </div>
       </main>
-
-    </div>
   );
 }
 

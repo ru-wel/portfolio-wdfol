@@ -1,20 +1,16 @@
 // Shared scroll-reveal for the two card grids (projects, certificates).
 //
-// The delay is driven by each card's own index via Motion's `custom` prop,
-// not by `staggerChildren` on the group. Stagger is orchestrated by the
-// parent at the moment IT changes variant, so any child mounted later (the
-// certificates disclosure) would skip the cascade and pop in all at once.
-// Index-based delay behaves the same whether a card mounts with the group
-// or long after it.
+// Each card watches its own entry into the viewport. The old version watched
+// the whole grid and waited for a fifth of it to show; inside the clipped
+// scroll panels that threshold was never met, so /projects rendered as an
+// empty box until someone scrolled a panel they could not see. A per-card
+// trigger also means cards mounted late (the certificates disclosure) reveal
+// on their own, with no parent to orchestrate them.
 //
-// Reduced motion: pass no motion props at all. See About.jsx.
+// The delay comes from the card's index within its row of arrivals, so a
+// batch still cascades instead of popping in all at once.
 
 export const STAGGER_STEP = 0.06;
-
-export const revealGroup = {
-  hidden: {},
-  visible: {},
-};
 
 export const revealItem = {
   hidden: { opacity: 0, y: 24 },
@@ -29,5 +25,18 @@ export const revealItem = {
   }),
 };
 
-// Reveal once, when a fifth of the grid has entered the viewport.
-export const revealViewport = { once: true, amount: 0.2 };
+// Reveal once, as soon as a sliver of the card is on screen.
+export const revealViewport = { once: true, amount: 0.1 };
+
+// Motion props for one card. Reduced motion gets none at all: the card is
+// simply there.
+export const revealCard = (index, reduceMotion) =>
+  reduceMotion
+    ? {}
+    : {
+        variants: revealItem,
+        custom: index,
+        initial: 'hidden',
+        whileInView: 'visible',
+        viewport: revealViewport,
+      };

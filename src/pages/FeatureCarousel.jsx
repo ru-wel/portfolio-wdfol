@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { PhotoView } from 'react-photo-view';
+import { useReducedMotion } from 'motion/react';
+import Zoomable from './Zoomable';
 import 'react-photo-view/dist/react-photo-view.css';
 import '../assets/styles/FeatureCarousel.scss';
+import Icon from './Icon';
 
 // Must match the `transition` duration on .feature-carousel__slides.
 const SLIDE_MS = 450;
@@ -13,6 +15,10 @@ const FeatureCarousel = ({ features }) => {
   // restart autoplay while the keyboard is still inside the controls.
   const [isHovered, setIsHovered] = useState(false);
   const [isFocusWithin, setIsFocusWithin] = useState(false);
+  // An explicit pause the reader controls. Hover and focus pause it only
+  // while they last, which a touch or screen-reader user cannot rely on.
+  const [isPaused, setIsPaused] = useState(false);
+  const reduceMotion = useReducedMotion();
   const isTransitioningRef = useRef(false);
   const screenshots = features.screenshots;
   const slideCount = screenshots.length;
@@ -57,11 +63,9 @@ const FeatureCarousel = ({ features }) => {
   }, [isTransitioning]);
 
   useEffect(() => {
-    // Autoplay stops while the reader is hovering, focused inside, or has
-    // asked the OS for reduced motion.
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if (slideCount <= 1 || isHovered || isFocusWithin || prefersReducedMotion) {
+    // Autoplay stops while the reader is hovering, focused inside, has
+    // pressed pause, or has asked the OS for reduced motion.
+    if (slideCount <= 1 || isHovered || isFocusWithin || isPaused || reduceMotion) {
       return undefined;
     }
 
@@ -70,7 +74,11 @@ const FeatureCarousel = ({ features }) => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [nextSlide, slideCount, isHovered, isFocusWithin]);
+  }, [nextSlide, slideCount, isHovered, isFocusWithin, isPaused, reduceMotion]);
+
+  // Nothing plays on its own under reduced motion, so there is nothing to
+  // pause and the button would only be noise.
+  const showPlayback = slideCount > 1 && !reduceMotion;
 
   return (
     <div
@@ -93,19 +101,22 @@ const FeatureCarousel = ({ features }) => {
               aria-roledescription="slide"
               aria-label={`${index + 1} of ${slideCount}: ${features.features[index]}`}
               aria-hidden={index !== currentIndex}
+              // Off-screen slides now hold a focusable zoom button; inert keeps
+              // Tab from landing on an image nobody can see. (React 18 has no
+              // boolean inert prop, so it goes through as an empty attribute.)
+              inert={index !== currentIndex ? '' : undefined}
             >
               <div className="feature-spotlight">
                 <div>
                   <div className="feature-spotlight__image">
-                    <PhotoView key={feature} src={feature}>
-                      <img
-                        src={feature}
-                        alt={`${features.title}: ${features.features[index]}`}
-                        loading="lazy"
-                      />
-                    </PhotoView>
+                    <Zoomable
+                      key={feature}
+                      src={feature}
+                      alt={`${features.title}: ${features.features[index]}`}
+                      sizes="(min-width: 1025px) 760px, 100vw"
+                      loading="lazy"
+                    />
                   </div>
-                  <p className="feature-spotlight__note">Click the image to preview it full size.</p>
                 </div>
                 <div className="feature-spotlight__content">
                   <h3 className="feature-spotlight__title">{features.features[index]}</h3>
@@ -118,7 +129,7 @@ const FeatureCarousel = ({ features }) => {
       </div>
 
       <div className="feature-carousel__controls">
-        <button type="button" className="feature-carousel__arrow feature-carousel__arrow--prev" onClick={prevSlide} aria-label="Previous feature"> &#8592; </button>
+        <button type="button" className="feature-carousel__arrow feature-carousel__arrow--prev" onClick={prevSlide} aria-label="Previous feature"><Icon name="arrow-left" /></button>
 
         <div className="feature-carousel__indicators">
           {screenshots.map((shot, index) => (
@@ -133,7 +144,19 @@ const FeatureCarousel = ({ features }) => {
           ))}
         </div>
 
-        <button type="button" className="feature-carousel__arrow feature-carousel__arrow--next" onClick={nextSlide} aria-label="Next feature"> &#8594; </button>
+        <button type="button" className="feature-carousel__arrow feature-carousel__arrow--next" onClick={nextSlide} aria-label="Next feature"><Icon name="arrow-right" /></button>
+
+        {showPlayback && (
+          <button
+            type="button"
+            className="feature-carousel__playback"
+            onClick={() => setIsPaused((paused) => !paused)}
+          >
+            <Icon name={isPaused ? 'play' : 'pause'} />
+            {isPaused ? 'Play' : 'Pause'}
+            <span className="sr-only"> slideshow</span>
+          </button>
+        )}
       </div>
     </div>
   );

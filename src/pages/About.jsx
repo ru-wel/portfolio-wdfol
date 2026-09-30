@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 
-import Nav from './Nav';
-import ProfileCard from './ProfileCard.jsx';
 import "../assets/styles/about.scss";
 import skills from '../assets/skills';
 import certificates from "../assets/certificates.js";
-import { revealGroup, revealItem, revealViewport } from "./reveal";
+import { revealCard } from "./reveal";
+import { usePageTitle } from "./usePageTitle";
+import { thumb } from "../assets/images";
 
 const About = () => {
 
@@ -25,42 +25,23 @@ const About = () => {
     }
   };
 
+  usePageTitle('About');
   const reduceMotion = useReducedMotion();
   const [showAllCertificates, setShowAllCertificates] = useState(false);
-  const [certificatesRevealed, setCertificatesRevealed] = useState(false);
 
-  const FEATURED_COUNT = 3;
+  // Two full rows of the two-column grid before the disclosure.
+  const FEATURED_COUNT = 4;
   const visibleCertificates = showAllCertificates
     ? certificates
     : certificates.slice(0, FEATURED_COUNT);
   const hiddenCount = certificates.length - FEATURED_COUNT;
 
-  // The grid gains children when the disclosure opens. `whileInView` with
-  // `once: true` fires one time and never again, so cards mounted after that
-  // stayed pinned at the "hidden" variant, invisible but still taking up grid
-  // space. Latch the reveal into state instead and drive `animate` from it,
-  // so late arrivals animate in like the first three did.
-  const certificateMotion = reduceMotion
-    ? {}
-    : {
-        variants: revealGroup,
-        initial: "hidden",
-        animate: certificatesRevealed ? "visible" : "hidden",
-        viewport: revealViewport,
-        onViewportEnter: () => setCertificatesRevealed(true),
-      };
-
   return(
-    <>
-    <div className='container'>
-      <Nav logo={'images/wel-logo-final.png'}/>
-      <ProfileCard />
-
       <main id="main-content" className="home-card">
 
         <section className="window" aria-labelledby="about-heading">
           <div className="window-header">
-              <h1 id="about-heading" className="window-title">About</h1>
+              <p className="window-title" aria-hidden="true">about</p>
               <div className="window-controls" aria-hidden="true">
                   <div className="control-dot"></div>
                   <div className="control-dot"></div>
@@ -68,8 +49,11 @@ const About = () => {
               </div>
           </div>
           <div className="window-content">
+            <h1 id="about-heading" className="hero">Web developer in Angeles City, working where the web meets automation.</h1>
             <h2 className="bio-heading">Personal bio</h2>
-            <p className="personal-bio">I am currently a 3rd Year Web Development Student with a strong passion for anything technology related. Being exposed to different gadgets from an early age sparked my genuine curiosity for all things technology and ultimately led me to this course / field. Beyond coding, I enjoy watching movies, listening to music, and engaging in various sports activities. In addition, I try to continuously explore new technologies and best practices related to Web Development to enhance my skills and prepare myself for the future.</p>
+            <p className="personal-bio">I&rsquo;m a full-stack web developer based in Angeles City, Pampanga. I graduated Summa Cum Laude in BS Information Technology, specializing in Web Development, from Holy Angel University in 2026.</p>
+            <p className="personal-bio">These days I work where web development meets automation: building workflows, integrations and AI-assisted tools that take repetitive work off people&rsquo;s plates. I use AI coding tools like Claude Code to build faster while staying in control of what ships, and I document as I go.</p>
+            <p className="personal-bio">Growing up around gadgets made me curious about how technology works, and that curiosity led me here. Away from the keyboard, I&rsquo;m usually watching movies, listening to music, or playing sports.</p>
           </div>
         </section>
 
@@ -91,57 +75,49 @@ const About = () => {
 
         </section>
 
-      </main>
+        <section className="projects certificates" aria-labelledby="certificates-heading">
+          <h2 id="certificates-heading">Certifications and trainings</h2>
+          <div id="certificate-cards" className="certificate-cards">
+            {visibleCertificates.map((certificate, index) => (
+              <motion.article
+                className="card"
+                key={certificate.title}
+                {...revealCard(index % 2, reduceMotion)}
+              >
+                <div className="certificate-logo">
+                  <img src={thumb(certificate.image)} alt={`${certificate.company} logo`} width={150} height={150} loading="lazy"/>
+                </div>
+                <h3>{certificate.company}</h3>
+                <p>{certificate.title}</p>
+                <button
+                  type="button"
+                  className='button-confirm'
+                  onClick={() => handleAction(certificate)}
+                  disabled={!certificate.url}
+                  aria-label={`${certificate.action}: ${certificate.title} from ${certificate.company}`}
+                >
+                  {certificate.action}
+                </button>
+              </motion.article>
+            ))}
+          </div>
 
-    </div>
-
-    <section className="certificate-container" aria-labelledby="certificates-heading">
-      <h2 id="certificates-heading">Certifications and trainings</h2>
-      <motion.div
-        id="certificate-cards"
-        className="certificate-cards"
-        {...certificateMotion}
-      >
-        {visibleCertificates.map((certificate, index) => (
-          <motion.article
-            className="card"
-            key={certificate.title}
-            variants={reduceMotion ? undefined : revealItem}
-            custom={index < FEATURED_COUNT ? index : index - FEATURED_COUNT}
-          >
-            <div className="certificate-logo">
-              <img src={certificate.image} alt={`${certificate.company} logo`} width={150} height={150} loading="lazy"/>
-            </div>
-            <h3>{certificate.company}</h3>
-            <p>{certificate.title}</p>
+          {hiddenCount > 0 && (
             <button
               type="button"
-              className='button-confirm'
-              onClick={() => handleAction(certificate)}
-              disabled={!certificate.url}
-              aria-label={`${certificate.action}: ${certificate.title} from ${certificate.company}`}
+              className="certificate-toggle"
+              aria-expanded={showAllCertificates}
+              aria-controls="certificate-cards"
+              onClick={() => setShowAllCertificates((open) => !open)}
             >
-              {certificate.action}
+              {showAllCertificates
+                ? 'Show fewer'
+                : `Show all ${certificates.length} certificates`}
             </button>
-          </motion.article>
-        ))}
-      </motion.div>
+          )}
+        </section>
 
-      {hiddenCount > 0 && (
-        <button
-          type="button"
-          className="certificate-toggle"
-          aria-expanded={showAllCertificates}
-          aria-controls="certificate-cards"
-          onClick={() => setShowAllCertificates((open) => !open)}
-        >
-          {showAllCertificates
-            ? 'Show fewer'
-            : `Show all ${certificates.length} certificates`}
-        </button>
-      )}
-    </section>
-    </>
+      </main>
   );
 }
 

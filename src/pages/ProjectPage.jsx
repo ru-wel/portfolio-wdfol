@@ -1,21 +1,23 @@
 import { Link, useParams } from "react-router-dom";
-import { PhotoProvider, PhotoView } from 'react-photo-view';
+import { PhotoProvider } from 'react-photo-view';
 
 import 'react-photo-view/dist/react-photo-view.css';
 import "../assets/styles/home.scss";
 import "../assets/styles/projectpage.scss";
-import Nav from './Nav';
 import projects from '../assets/projects'
 import FeatureCarousel from './FeatureCarousel';
+import ProjectFooter from './ProjectFooter';
+import Zoomable from './Zoomable';
+import { usePageTitle } from './usePageTitle';
+import Icon from './Icon';
 
 const ProjectPage = () => {
   const { slug } = useParams();
   const project = projects.find((p) => p.slug === slug);
+  usePageTitle(project ? project.title : 'Project not found', project?.description);
 
   if (!project) {
     return (
-      <div className='container'>
-        <Nav logo="/images/wel-logo-final.png"/>
         <main id="main-content" className="not-found-card">
           <div className="window">
             <div className="window-header">
@@ -35,69 +37,62 @@ const ProjectPage = () => {
             </div>
           </div>
         </main>
-      </div>
     );
   }
 
   return (
-    <div className='container'>
-      <Nav logo={project.logo}/>
       <PhotoProvider maskOpacity={0.5}>
-        <main id="main-content" className="projectmain-card">
-          <Link to="/projects" className="back-link">← All projects</Link>
+        <main id="main-content" className="home-card project-page">
 
-          <PhotoView key={project.slug} src={project.image}>
-            <img src={project.image} alt={`${project.title}: main screen`} width={537} height={450} className='project-image'/>
-          </PhotoView>
-          <p className="note">Click the image to preview it full size.</p>
+          {/* The project's cover: the purple band that used to be a separate
+              column beside the page. Inside the frame, it heads the page the
+              way the hero window heads every other one. */}
+          <section className="project-hero" aria-labelledby="project-title">
+            <Link to="/projects" className="back-link"><Icon name="arrow-left" /> All projects</Link>
 
-          <div className="project-content">
-
-            <div className="project-content-role">
-              <div className="roles">
-                <p>{project.roles[0]}</p>
-                <p>{project.roles[1]} Project</p>
+            <div className="project-content">
+              <div className="project-content-role">
+                <div className="roles">
+                  <p>{project.role}</p>
+                  <p>{project.client}</p>
+                </div>
+                <div className="social-links">
+                  {project.links?.map((link, index) => (
+                    link && (
+                      <a key={link} href={link} target="_blank" className="social-icon" rel="noopener noreferrer" aria-label={index === 0 ? `Open the live ${project.title} site` : `View ${project.title} on GitHub`}>
+                        <Icon name={index === 0 ? 'globe' : 'github'} />
+                      </a>
+                    )
+                  ))}
+                </div>
               </div>
-              <div className="social-links">
-                {project.links?.map((link, index) => (
-                  link && (
-                    <a key={link} href={link} target="_blank" className="social-icon" rel="noopener noreferrer" aria-label={index === 0 ? `Open the live ${project.title} site` : `View ${project.title} on GitHub`}>
-                      {index === 0 ? <i className="fa-solid fa-globe" aria-hidden="true"></i> : <i className="fab fa-github" aria-hidden="true"></i>}
-                    </a>
-                  )
-                ))}
-              </div>
+
+              <h1 id="project-title">{project.title}</h1>
+              <p className="project-context">{project.context}</p>
+              <p className='border-btm'>{project.description3}</p>
+              <p className='border-btm'>Created using: <span>{project.description2}</span></p>
             </div>
 
-            <h1>{project.title}</h1>
-            <p className='border-btm'>{project.description3}</p>
-            <p className='border-btm'>Created using: <span>{project.description2}</span></p>
+            <Zoomable
+              key={project.slug}
+              src={project.image}
+              alt={`${project.title}: main screen`}
+              sizes="(min-width: 1025px) 480px, 100vw"
+              className='project-image'
+            />
+          </section>
 
-          </div>
+          <section className="projects project-features" aria-labelledby="features-heading">
+            <h2 id="features-heading">Project features</h2>
+            <div className="features-section">
+              <FeatureCarousel features={project} />
+            </div>
+          </section>
+
+          <ProjectFooter slug={project.slug} />
+
         </main>
-
-        <section className="projectpage-card" aria-labelledby="features-heading">
-
-          <div className="window">
-
-            <div className="window-header">
-              <h2 id="features-heading" className="window-title window-title--section">Project features</h2>
-              <div className="window-controls" aria-hidden="true">
-                  <div className="control-dot"></div>
-                  <div className="control-dot"></div>
-                  <div className="control-dot"></div>
-              </div>
-            </div>
-
-              <div className="features-section">
-                <FeatureCarousel features={project} />
-              </div>
-
-          </div>
-
-        </section>
       </PhotoProvider>
-    </div>
   )
 }
 

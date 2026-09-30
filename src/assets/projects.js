@@ -1,3 +1,6 @@
+// Newest first. `client` is who the project was for and leads wherever a
+// project is introduced; `context` (school, capstone, client) is small print.
+// `role` is Reuel's part in it.
 const projects = [
   {
     slug: 'arise-hris',
@@ -10,8 +13,9 @@ const projects = [
       'https://acdc-hris.site',
       'https://github.com/ru-wel/WDCAP-HRIS'
     ],
-    roles: ['Backend', 'School / Capstone'],
-    logo: '/images/wel-logo-final.png',
+    role: 'Backend',
+    client: 'Construction company',
+    context: 'Capstone project',
     screenshots: [
       '/images/hris-employees.png',
       '/images/hris-leave.png',
@@ -41,8 +45,9 @@ const projects = [
     links: [
       'https://theangelite.net/',
     ],
-    roles: ['WordPress', 'Client'],
-    logo: '/images/wel-logo-final.png',
+    role: 'WordPress',
+    client: 'Holy Angel University student publication',
+    context: 'Client project',
     screenshots: [
       '/images/angelite-archives.png',
       '/images/angelite-opinion.png',
@@ -73,8 +78,9 @@ const projects = [
       'https://internstreetph.site/',
       'https://github.com/ru-wel/internstreet-cloudcom'
     ],
-    roles: ['Backend', 'School'],
-    logo: '/images/wel-logo-final.png',
+    role: 'Backend',
+    client: 'Students and companies across the Philippines',
+    context: 'School project',
     screenshots: [
       '/images/intern-apply.png',
       '/images/intern-dashboard.png',
@@ -110,8 +116,9 @@ const projects = [
     links: [
       'https://baumannfitbox.site/',
     ],
-    roles: ['WordPress', 'School / Client'],
-    logo: '/images/wel-logo-final.png',
+    role: 'WordPress',
+    client: 'Gym in Tagaytay City',
+    context: 'School project for a client',
     screenshots: [
       '/images/baumann-about.png',
       '/images/baumann-services.png',
@@ -139,8 +146,9 @@ const projects = [
       'https://mnhs-lms.onrender.com/login',
       'https://github.com/ru-wel/mnhs-lms-mern',
     ],
-    roles: ['Backend', 'Client'],
-    logo: '/images/wel-logo-final.png',
+    role: 'Backend',
+    client: 'High school in Mexico, Pampanga',
+    context: 'Proposed to a client',
     screenshots: [
       '/images/mnhs-dashboard.png',
       '/images/mnhs-admin-users.jpeg',
@@ -168,8 +176,9 @@ const projects = [
       'https://caution-coffee.onrender.com/',
       'https://github.com/ru-wel/CAUTION-COFFEE',
     ],
-    roles: ['Backend', 'School / Client'],
-    logo: '/images/wel-logo-final.png',
+    role: 'Backend',
+    client: 'Café in Angeles City',
+    context: 'School project for a client',
     screenshots: [
       '/images/caution-login.png',
       '/images/caution-cart.png',
@@ -197,8 +206,9 @@ const projects = [
       'https://areahomes.hstn.me/',
       'https://github.com/ru-wel/AREA-DWEBIMAN',
     ],
-    roles: ['Fullstack', 'School'],
-    logo: '/images/wel-logo-final.png',
+    role: 'Full-stack',
+    client: 'Fictional travel brand',
+    context: 'School project',
     screenshots: [
       '/images/area-one-rental.png',
       '/images/area-book.png',
@@ -225,8 +235,9 @@ const projects = [
     links: [
       'https://prgmm.WordPress.com/',
     ],
-    roles: ['WordPress', 'School'],
-    logo: '/images/wel-logo-final.png',
+    role: 'WordPress',
+    client: 'Starting web developers',
+    context: 'Personal blog',
     screenshots: [
       '/images/prgm-git.png',
       '/images/prgm-sql.png',

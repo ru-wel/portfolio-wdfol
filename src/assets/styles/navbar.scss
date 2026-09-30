@@ -1,22 +1,82 @@
-nav {
-  font-family: 'Px Grotesk', sans-serif;
+/* Scoped to the site nav: a bare `nav` selector also restyled every other
+   <nav> on the page (the project pager) as a fixed, uppercase bar. */
+.site-nav {
+  font-family: var(--font-body);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   display: flex;
   flex-direction: column;
-  margin-right: var(--space-2);
-  position: relative;
-  left: 10px;
-  float: left;
-  width: 75px;
+  /* Desktop: a rail in the first shell track, pinned beside the identity
+     column. It used to float next to whatever the page centred, so it
+     landed at a different x on every route. */
+  grid-column: 1;
+  position: sticky;
+  top: var(--shell-top);
   z-index: var(--z-nav);
   text-align: center;
   opacity: 1;
   visibility: visible;
   background-color: var(--paper);
 
-  .nav-logo{
-    display: none;
+  /* Desktop: the name runs up a tile at the top of the rail, like a book
+     spine, so it is on every page without a profile column to carry it. */
+  .nav-wordmark{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4) 0;
+    margin-bottom: var(--space-3);
+    border: var(--border-divider) solid var(--ink);
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    text-transform: none;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    transition: color var(--speed) var(--ease),
+      background-color var(--speed) var(--ease);
+
+    &:hover {
+      color: var(--deep);
+    }
+  }
+
+  /* The résumé is a file, not a page: a pressable block under the tabs
+     rather than another flat tab. */
+  .nav-resume {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+    margin-top: var(--space-3);
+    padding: var(--space-3) var(--space-2);
+    border: var(--border-default) solid var(--ink);
+    border-radius: var(--radius-control);
+    box-shadow: var(--shadow-hard-sm);
+    background-color: var(--ink);
+    color: var(--paper);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    transition: background-color var(--speed) var(--ease),
+      color var(--speed) var(--ease),
+      box-shadow var(--speed) var(--ease),
+      transform var(--speed) var(--ease);
+
+    .icon {
+      font-size: 20px;
+    }
+
+    &:hover {
+      background-color: var(--accent);
+      color: var(--ink);
+      box-shadow: var(--shadow-hard-accent);
+    }
+
+    &:active {
+      box-shadow: none;
+      transform: translateY(2px);
+    }
   }
 
   .nav-items {
@@ -35,15 +95,17 @@ nav {
         background-color var(--speed) var(--ease),
         transform var(--speed) var(--ease);
 
-      i {
+      .icon {
         font-size: 23px;
         transition: transform var(--speed) var(--ease);
       }
 
+      /* Hover text in --deep, not the green accent: green on paper is
+         2.1:1, too faint to read as a change. */
       &:hover {
-        color: var(--accent);
+        color: var(--deep);
 
-        i {
+        .icon {
           transform: translateY(-1px);
         }
       }
@@ -93,28 +155,54 @@ nav {
 
   // tablet / mobile nav styles
 
+  /* Tablet / phone: a slim fixed bar. It was ~120px tall, a fifth of a
+     phone screen, before any content. */
   @media (max-width: 1024px) {
     width: 100%;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
     z-index: var(--z-nav);
     border-bottom: var(--border-default) solid var(--ink);
-    padding: var(--space-4);
-    
-    .nav-logo{
+    padding: var(--space-2) max(var(--space-4), calc((100% - 680px) / 2));
+
+    /* Pixel face, but in sentence case and at a size it stays legible;
+       nav rules above set uppercase for the tab labels. */
+    .nav-wordmark{
       display: block;
+      writing-mode: horizontal-tb;
+      transform: none;
+      border: none;
+      margin: 0;
+      letter-spacing: 0.01em;
+      padding: var(--space-2) 0;
     }
 
     .nav-items {
       display: flex;
       flex-direction: row;
+      align-items: center;
+
+      .nav-resume {
+        margin: 0 0 0 var(--space-3);
+        padding: var(--space-2) var(--space-3);
+        align-self: center;
+
+        .icon {
+          font-size: 16px;
+        }
+      }
 
       .nav-link {
         min-width: 72px;
-        max-width: 82px;
+        padding: var(--space-2) var(--space-3);
+
+        .icon {
+          font-size: 18px;
+        }
       }
 
       /* The active marker runs along the bottom once the bar is horizontal. */
@@ -130,37 +218,45 @@ nav {
   }
 
   @media (max-width: 480px) {
+    /* The dropdown is absolutely positioned, so it never needed to animate
+       its height: nothing below it reflows. It keeps its full size and is
+       revealed with a clip from the top, plus a short slide and fade. All
+       three run on the compositor; max-height and padding forced layout on
+       every frame. Visibility flips at the end of the close, so the links
+       leave the tab order once hidden. */
     .nav-items {
-      visibility: hidden;
       flex-direction: row;
+      flex-wrap: wrap;
       justify-content: center;
+      gap: var(--space-2) 0;
       position: absolute;
-      padding: var(--space-2);
       top: 100%;
       left: 0;
       width: 100%;
+      padding: var(--space-4) var(--space-2);
       background-color: var(--paper);
       border-bottom: var(--border-default) solid var(--ink);
       opacity: 0;
       visibility: hidden;
-      transform: translateY(-1rem);
-      max-height: 0;
-      padding: 0 var(--space-2);
-
-      transition: 
-        opacity 0.4s ease,
-        visibility 0.4s ease,
-        transform 0.4s ease,
-        max-height 0.4s ease,
-        padding 0.4s ease;
+      transform: translateY(-0.5rem);
+      clip-path: inset(0 0 100% 0);
+      transition:
+        opacity var(--speed) var(--ease),
+        transform var(--speed) var(--ease),
+        clip-path var(--speed) var(--ease),
+        visibility 0s linear var(--speed);
     }
-  
+
     .nav-items.open {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
-      max-height: 500px;
-      padding: var(--space-4) var(--space-2);
+      clip-path: inset(0 0 0 0);
+      transition:
+        opacity var(--speed) var(--ease),
+        transform var(--speed) var(--ease),
+        clip-path var(--speed) var(--ease),
+        visibility 0s linear 0s;
     }
   
     .hamburger {

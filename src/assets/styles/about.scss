@@ -2,12 +2,6 @@
   border: var(--border-default) solid var(--ink);
   border-top: none;
   border-radius: var(--radius-surface);
-  transition: box-shadow var(--speed) var(--ease), transform var(--speed) var(--ease);
-
-  &:hover {
-    box-shadow: var(--shadow-hard);
-    transform: translate(-2px, -2px);
-  }
 
   .technical-skills {
     height: auto;
@@ -51,39 +45,22 @@
   padding-bottom: var(--space-1);
 }
 
-.certificate-container{
+/* Lives in the content column now, under the same lowercase section label
+   as everything else. It used to sit below the whole shell, reachable only
+   by scrolling the outer page, with a heading style of its own. */
+.certificates{
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  /* Same shell as .container. Without this the section ran full-bleed
-     while every other block on the site stopped at 1440px. */
-  width: 100%;
-  max-width: var(--shell-max);
-  margin-inline: auto;
-  padding: var(--space-8) var(--space-4);
 
-  h2{
-    text-align: center;
-    border-top: var(--border-divider) solid var(--ink);
-    border-bottom: var(--border-divider) solid var(--ink);
-    margin-bottom: var(--space-4);
-    padding: var(--space-2);
-    width: 100%;
-    font-family: 'PX Sans Nouveaux', 'Px Grotesk', sans-serif;
-    font-size: var(--text-xl);
-    font-weight: normal;
-    letter-spacing: 0.02em;
-  }
-  
   .certificate-toggle{
-    margin-top: var(--space-5);
+    align-self: flex-start;
+    margin: var(--space-5) var(--space-4) 0;
     padding: var(--space-3) var(--space-5);
     border: var(--border-default) solid var(--ink);
     border-radius: var(--radius-control);
     background-color: var(--paper);
     box-shadow: var(--shadow-hard-sm);
-    font-family: 'Px Grotesk', sans-serif;
+    font-family: var(--font-body);
     font-size: var(--text-sm);
     font-weight: 600;
     letter-spacing: 0.02em;
@@ -108,32 +85,24 @@
     /* Fixed track count, NOT auto-fit. auto-fit sizes tracks from how many
        items are present, so opening the disclosure took the three cards
        already on screen from 459px to 269px while the new ones were fading
-       in. Column count must not depend on item count. Three columns also
-       makes the collapsed state exactly one full row. */
-    grid-template-columns: repeat(3, 1fr);
+       in. Column count must not depend on item count. Two columns (the
+       content column's width) with four featured cards makes the collapsed
+       state exactly two full rows. */
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-4);
-    width: 100%;
+    padding: 0 var(--space-4);
 
-    @media (max-width: 1024px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media (max-width: 685px) {
+    @media (max-width: 560px) {
       grid-template-columns: 1fr;
     }
 
+    /* Not a link: the button inside is the target, so only it responds. */
     .card {
       border: var(--border-default) solid var(--ink);
-      transition: all 0.2s;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       height: 100%;
-
-      &:hover {
-        box-shadow: var(--shadow-hard);
-        transform: translate(-2px, -2px);
-      }
 
       .certificate-logo{
         display: flex;
@@ -157,7 +126,7 @@
       p {
         border-top: var(--border-divider) solid var(--ink);
         padding: var(--space-2);
-        font-weight: 300;
+        font-weight: 400;
       }
 
       .button-confirm {
@@ -170,9 +139,11 @@
         box-shadow: var(--shadow-hard-sm);
         font-size: var(--text-base);
         font-weight: 700;
-        font-family: 'Px Grotesk';
+        font-family: var(--font-body);
         cursor: pointer;
-        transition: all 0.2s ease-in-out;
+        transition: background-color var(--speed) var(--ease),
+          box-shadow var(--speed) var(--ease),
+          transform var(--speed) var(--ease);
         color: var(--ink);
         padding: var(--space-2) var(--space-5);
         margin: var(--space-4);
@@ -206,24 +177,4 @@
       }
     }
   }
-}
-
-// scrollbar styles
-
-::-webkit-scrollbar {
-  width: 7px;
-}
-
-::-webkit-scrollbar-track {
-  box-shadow: var(--shadow-inset-track);
-  border-radius: var(--radius-control);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--deep); 
-  border-radius: var(--radius-control);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent); 
 }

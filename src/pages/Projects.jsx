@@ -1,27 +1,18 @@
-import { motion, useReducedMotion } from 'motion/react';
-
-import Nav from './Nav';
-import ProfileCard from './ProfileCard.jsx';
 import ProjectCard from './ProjectCard.jsx';
 import "../assets/styles/home.scss";
 import projects from '../assets/projects';
-import { revealGroup, revealViewport } from './reveal';
+import { usePageTitle } from './usePageTitle';
 
 const Projects = () => {
-
-    const reduceMotion = useReducedMotion();
+    usePageTitle('Projects');
 
     return(
-      <div className='container'>
-      <Nav logo={'images/wel-logo-final.png'}/>
-      <ProfileCard />
-
         <main id="main-content" className="home-card">
 
           <section className="window" aria-labelledby="projects-heading">
 
             <div className="window-header">
-                <h1 id="projects-heading" className="window-title">Projects</h1>
+                <p className="window-title" aria-hidden="true">projects</p>
                 <div className="window-controls" aria-hidden="true">
                     <div className="control-dot"></div>
                     <div className="control-dot"></div>
@@ -30,28 +21,24 @@ const Projects = () => {
             </div>
 
             <div className="window-content">
-              <p>Throughout my three (3) years of studying Web Development, these have been some of the projects that I have created so far. These range from client projects to school work, while also taking up both <span>frontend and backend</span> roles during the development process.</p>
+              <h1 id="projects-heading" className="hero">Client work and school projects, with what I built on each.</h1>
+              <p>A mix of client work and school projects built before and during my degree, including live systems for a construction company, a university publication, a local high school and a gym. On each one I&rsquo;ve noted which parts I built.</p>
+              <p>My current professional work is internal to The Back Room, so it&rsquo;s covered under <span>Experience</span> on the home page rather than here.</p>
             </div>
           </section>
 
           <section className="projects" aria-labelledby="projects-list-heading">
             <h2 id="projects-list-heading">All projects, newest first</h2>
 
-            <motion.div
-            className="projectcards"
-            variants={revealGroup}
-            initial={reduceMotion ? false : 'hidden'}
-            whileInView="visible"
-            viewport={revealViewport}
-          >
+            <div className="projectcards">
               {projects.map((project, index) =>
-                <ProjectCard key={project.slug} project={project} index={index} />
+                // Stagger by column, not list position: a card that scrolls in
+                // alone later should not wait out the delay of the ones above.
+                <ProjectCard key={project.slug} project={project} index={index % 2} />
               )}
-            </motion.div>
+            </div>
           </section>
         </main>
-
-      </div>
     );
 }
 

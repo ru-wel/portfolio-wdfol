@@ -1,42 +1,75 @@
 const skills = [
   {
-    category: "Programming Languages",
+    category: "Automation & Integration",
     skills: [
-      { name: "HTML", progress: 80 },
-      { name: "CSS", progress: 65 },
-      { name: "JavaScript", progress: 70 },
-      { name: "PHP", progress: 50 }
+      { name: "n8n" },
+      { name: "Zapier" },
+      { name: "REST APIs" },
+      { name: "Xero" },
+      { name: "Microsoft Teams" },
+      { name: "Outlook" },
     ]
   },
   {
-    category: "Frameworks",
+    category: "AI",
     skills: [
-      { name: "Node.js", progress: 65 },
-      { name: "Express.js", progress: 65 },
-      { name: "Vue.js", progress: 40 },
-      { name: "React", progress: 65 },
-      { name: "AngularJS", progress: 55 },
-      { name: "Laravel", progress: 40 },
-      { name: "Bootstrap", progress: 50 },
-      { name: "Tailwind", progress: 40 },
+      { name: "LLM integration" },
+      { name: "RAG" },
+      { name: "Claude Code" },
+      { name: "ChatGPT" },
+    ]
+  },
+  {
+    category: "Frontend",
+    skills: [
+      { name: "React" },
+      { name: "AngularJS" },
+      { name: "Vue.js" },
+      { name: "Tailwind" },
+      { name: "Bootstrap" },
+      { name: "HTML" },
+      { name: "CSS" },
+    ]
+  },
+  {
+    category: "Backend",
+    skills: [
+      { name: "Node.js" },
+      { name: "Express.js" },
+      { name: "PHP" },
+      { name: "Laravel" },
+    ]
+  },
+  {
+    category: "Languages",
+    skills: [
+      { name: "JavaScript" },
+      { name: "Python" },
+      { name: "PHP" },
     ]
   },
   {
     category: "Databases",
     skills: [
-      { name: "MySQL", progress: 60 },
-      { name: "MongoDB", progress: 60 },
-      { name: "PostgreSQL", progress: 60 },
-      { name: "Firebase", progress: 50 },
+      { name: "PostgreSQL" },
+      { name: "MySQL" },
+      { name: "MongoDB" },
+      { name: "Firebase" },
+      { name: "Supabase" },
+    ]
+  },
+  {
+    category: "Cloud & DevOps",
+    skills: [
+      { name: "Google Cloud Platform" },
+      { name: "Docker" },
     ]
   },
   {
     category: "Tools",
     skills: [
-      { name: "WordPress", progress: 75 },
-      { name: "Figma", progress: 60 },
-      { name: "Canva", progress: 80 },
-      { name: "Microsoft Office", progress: 80 },
+      { name: "WordPress" },
+      { name: "Figma" },
     ]
   },
 ]

@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 
-import Nav from './Nav';
 import "../assets/styles/home.scss";
 import "../assets/styles/projectpage.scss";
+import { usePageTitle } from './usePageTitle';
 
-const NotFound = () => (
-  <div className='container'>
-    <Nav logo={'/images/wel-logo-final.png'}/>
+const NotFound = () => {
+  usePageTitle('Page not found');
+
+  return (
     <main id="main-content" className="not-found-card">
       <div className="window">
         <div className="window-header">
@@ -27,7 +28,7 @@ const NotFound = () => (
         </div>
       </div>
     </main>
-  </div>
 );
+};
 
 export default NotFound;

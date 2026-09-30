@@ -1,22 +1,13 @@
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css');
-
 /* FONTS
    Local Px Grotesk faces. The family name must be a bare string (no fallback
-   list) and TTF must be declared as format("truetype") — both were wrong
-   before, which made every face fail silently and drop the page to a system
-   default. */
+   list), and the format hint must match the file. Both were wrong once,
+   which made every face fail silently and drop the page to a system
+   default. WOFF2, converted from the TTFs beside them, which stay as the
+   editable sources. */
 
 @font-face {
   font-family: 'Px Grotesk';
-  src: url('./fonts/Px-Grotesk-Light.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Px Grotesk';
-  src: url('./fonts/Px-Grotesk-Regular.ttf') format('truetype');
+  src: url('./fonts/Px-Grotesk-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -24,7 +15,7 @@
 
 @font-face {
   font-family: 'Px Grotesk';
-  src: url('./fonts/Px-Grotesk-Bold.ttf') format('truetype');
+  src: url('./fonts/Px-Grotesk-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -32,7 +23,7 @@
 
 @font-face {
   font-family: 'PX Sans Nouveaux';
-  src: url('./fonts/px_sans_nouveaux.ttf') format('truetype');
+  src: url('./fonts/px_sans_nouveaux.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -41,7 +32,7 @@
 /* Synthesised mid weights so hierarchy isn't stuck between 400 and 700. */
 @font-face {
   font-family: 'Px Grotesk';
-  src: url('./fonts/Px-Grotesk-Regular.ttf') format('truetype');
+  src: url('./fonts/Px-Grotesk-Regular.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -49,7 +40,7 @@
 
 @font-face {
   font-family: 'Px Grotesk';
-  src: url('./fonts/Px-Grotesk-Bold.ttf') format('truetype');
+  src: url('./fonts/Px-Grotesk-Bold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -75,7 +66,6 @@
   --deep-mute: rgba(46, 26, 79, 0.22);
   --deep-mute-strong: rgba(46, 26, 79, 0.45);
   --accent: #2bbd6f;
-  --accent-press: #229d5c;
 
   /* Form error state. Warm red, same family as the ink. */
   --danger: #9c2b2b;
@@ -86,7 +76,6 @@
   --shadow-hard-accent: 3px 3px 0 var(--accent);
   --shadow-hard-danger: 3px 3px 0 var(--danger);
   /* Inset outlines: a hairline drawn inside the box rather than around it. */
-  --shadow-inset-hairline: inset 0 0 0 1px var(--ink);
   --shadow-inset-track: inset 0 0 1px var(--ink-faint);
   /* Elevation has ONE language: the hard offset block. Blurred lift,
      ambient and badge shadows were three more, all saying the same thing
@@ -103,14 +92,19 @@
   --space-8: 3rem;
   --space-9: 4rem;
 
-  /* Clearance for the fixed mobile nav bar. Not a spacing step. */
-  --nav-clearance: 150px;
+  /* Clearance for the fixed mobile nav bar: bar height plus one gap. Not a
+     spacing step. */
+  --nav-clearance: 104px;
+
+  /* SHELL — desktop tracks. The nav rail is shared by every route, so
+     nothing shifts sideways between pages. */
+  --nav-rail: 76px;
+  /* Sticky offset for the nav rail on desktop. */
+  --shell-top: var(--space-8);
 
   /* BORDERS — three steps, by emphasis. Width encodes how much weight an
      edge should carry, NOT how deeply it is nested:
-       strong   3px  edges that frame a whole block of the page, plus the
-                     logo badge, which is deliberately heavy where it
-                     overlaps the photo
+       strong   3px  edges that frame a whole block of the page
        default  2px  ordinary surface and control edges: windows, project
                      and certificate cards, inputs, buttons
        divider  1px  rules inside a surface (header underlines, cell edges)
@@ -132,6 +126,16 @@
   --radius-media: 10px;
   --radius-round: 50%;
 
+  /* TYPE ROLES — two families, each with one job.
+       display  PX Sans Nouveaux: the name, project titles, section labels.
+                Never body copy, buttons or small caps; it stops being
+                legible below about 14px.
+       body     Px Grotesk at 400 for prose, 600 for labels and controls.
+                There is no 300: it was the default body weight, and it made
+                the facts that matter read as fine print. */
+  --font-display: 'PX Sans Nouveaux', 'Px Grotesk', sans-serif;
+  --font-body: 'Px Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
   /* TYPE SCALE — the page title is the largest thing on the page. */
   --text-xs: 0.78rem;
   --text-sm: 0.875rem;
@@ -139,9 +143,11 @@
   --text-lg: 1.125rem;
   --text-xl: 1.35rem;
   --text-2xl: 1.75rem;
+  /* Home's positioning line. The one size allowed to track the viewport. */
+  --text-display: clamp(1.75rem, 1.1rem + 1.7vw, 2.5rem);
 
   --measure: 65ch;
-  --shell-max: 1440px;
+  --shell-max: 1180px;
 
   --speed: 220ms;
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -170,7 +176,7 @@
 }
 
 html {
-  font-family: 'Px Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: var(--font-body);
   color: var(--ink);
   background-color: var(--paper);
   -webkit-font-smoothing: antialiased;
@@ -239,12 +245,118 @@ p {
 }
 
 /* FOCUS — visible keyboard ring everywhere, not just where a component
-   happens to define one. */
+   happens to define one. The colour is a variable so a dark surface can
+   flip it: --deep on the purple project panel measured 1:1, which made
+   the ring there invisible. */
 
 :focus-visible {
-  outline: 2px solid var(--deep);
+  outline: 2px solid var(--focus-ring, var(--deep));
   outline-offset: 2px;
   border-radius: var(--radius-control);
+}
+
+/* ZOOMABLE SCREENSHOT — see Zoomable.jsx. A bare button around the image;
+   the corner badge is the affordance on touch screens. */
+
+.zoomable {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+.zoomable__icon {
+  position: absolute;
+  right: var(--space-2);
+  bottom: var(--space-2);
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: var(--border-divider) solid var(--ink);
+  border-radius: var(--radius-round);
+  background-color: var(--paper);
+  color: var(--ink);
+  font-size: var(--text-sm);
+  transition: transform var(--speed) var(--ease);
+}
+
+.zoomable:hover .zoomable__icon {
+  transform: scale(1.1);
+}
+
+/* ICONS — inline SVG from Icon.jsx. Sized by font-size and coloured by
+   currentColor, the way the old icon font was, so the rules that size an
+   icon's container still size the icon. */
+
+.icon {
+  display: inline-block;
+  height: 1em;
+  width: auto;
+  vertical-align: -0.125em;
+  overflow: visible;
+}
+
+/* ENTRY — the one page-load motion: content frames rise into place. It
+   lived in the retired profile card's stylesheet; the frames that use it
+   are global. */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* BUTTONS — the pressable block: ink edge, small hard offset, green on
+   hover, pressed flat. One class instead of three copies (featured CTA,
+   project footer, home hero). */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border: var(--border-default) solid var(--ink);
+  border-radius: var(--radius-control);
+  box-shadow: var(--shadow-hard-sm);
+  background-color: var(--paper);
+  color: var(--ink);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  transition: background-color var(--speed) var(--ease),
+    box-shadow var(--speed) var(--ease),
+    transform var(--speed) var(--ease);
+}
+
+.button:hover {
+  background-color: var(--accent);
+  box-shadow: var(--shadow-hard-accent);
+}
+
+.button:active {
+  box-shadow: none;
+  transform: translateY(2px);
+}
+
+/* The résumé is the one filled button: it is the thing a recruiter came
+   for. */
+.button--primary {
+  background-color: var(--ink);
+  color: var(--paper);
+}
+
+.button--primary:hover {
+  color: var(--ink);
 }
 
 /* SCREEN-READER ONLY */
@@ -280,6 +392,26 @@ p {
 
 .skip-link:focus-visible {
   top: var(--space-2);
+}
+
+/* SCROLLBAR — the page scrollbar, in the palette. */
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: var(--shadow-inset-track);
+  border-radius: var(--radius-control);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--deep);
+  border-radius: var(--radius-control);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
 }
 
 /* MOTION */

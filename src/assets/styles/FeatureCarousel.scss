@@ -27,21 +27,46 @@
   
   &__controls {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     margin-top: var(--space-6);
     gap: var(--space-5);
   }
+
+  /* Visible, labelled pause. Quiet next to the arrows, but always there
+     while the slides advance on their own. */
+  &__playback {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 44px;
+    padding: var(--space-1) var(--space-3);
+    border: var(--border-divider) solid var(--ink);
+    border-radius: var(--radius-control);
+    background: none;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--speed) var(--ease);
+
+    .icon {
+      font-size: var(--text-xs);
+    }
+
+    &:hover {
+      background-color: var(--paper-sunk);
+    }
+  }
   
   &__arrow {
     border: var(--border-divider) solid var(--ink);
-    font-size: 1.4rem;
-    /* Optical: the arrow glyph sits high in its box. */
+    font-size: 1.1rem;
     line-height: 1;
-    padding-bottom: 2px;
     cursor: pointer;
-    width: 42px;
-    height: 42px;
+    /* 44px: the smallest comfortable touch target. */
+    width: 44px;
+    height: 44px;
     border-radius: var(--radius-round);
     display: flex;
     align-items: center;
@@ -115,11 +140,19 @@
     border: var(--border-divider) solid var(--ink);
     overflow: hidden;
     
+    /* height: auto is what lets the width/height attributes work: they
+       set the aspect ratio for the reserved box, CSS sets the size. */
+    /* One frame for every slide. Screenshots run from 0.38 to 0.82 in
+       ratio, and the track takes the tallest slide's height, so short
+       slides left a large empty band above the controls. Cropped from the
+       top like the project cards; the viewer still opens the whole image. */
     img {
       width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      object-position: top;
       display: block;
-      cursor: pointer;
-      transition: transform 0.3s ease;
     }
   }
   
@@ -127,13 +160,6 @@
     flex: 1;
   }
 
-  &__note{
-    font-size: var(--text-xs);
-    padding-top: var(--space-2);
-    font-weight: 300;
-    color: var(--ink-soft);
-  }
-  
   &__title {
     font-size: var(--text-xl);
     font-weight: 600;
@@ -147,7 +173,7 @@
     padding-top: var(--space-2);
     font-size: var(--text-base);
     line-height: 1.65;
-    font-weight: 300;
+    font-weight: 400;
     max-width: var(--measure);
     color: var(--ink-soft);
   }

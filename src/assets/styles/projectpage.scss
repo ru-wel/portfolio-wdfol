@@ -1,9 +1,11 @@
 .container{
 
+  /* Same footing as every other page's frame: 40px off the rail, flat. */
   .not-found-card{
-    width: min(620px, 80%);
+    grid-column: 2;
+    width: min(620px, 100%);
+    margin-left: var(--space-7);
     border: var(--border-strong) solid var(--ink);
-    box-shadow: var(--shadow-hard);
     padding: var(--space-4);
     background-color: var(--paper);
     opacity: 0;
@@ -47,7 +49,7 @@
         display: flex;
         flex-direction: column;
         gap: var(--space-4);
-        font-weight: 300;
+        font-weight: 400;
       }
     }
 
@@ -60,11 +62,14 @@
     .not-found-link{
       align-self: flex-start;
       border: var(--border-default) solid var(--ink);
+      border-radius: var(--radius-control);
       padding: var(--space-3) var(--space-4);
-      font-family: 'PX Sans Nouveaux';
-      font-size: var(--text-xs);
-      text-transform: uppercase;
-      transition: all 0.2s;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      transition: background-color var(--speed) var(--ease),
+        box-shadow var(--speed) var(--ease),
+        transform var(--speed) var(--ease);
 
       &:hover{
         background-color: var(--accent);
@@ -91,17 +96,10 @@
     }
 
     @media (max-width: 1024px) {
-      margin-top: var(--space-4);
-      width: 70%;
-    }
-
-    @media (max-width: 768px) {
-      width: 80%;
+      margin-left: 0;
     }
 
     @media (max-width: 480px) {
-      width: 90%;
-
       .window .window-content{
         padding: var(--space-4);
       }
@@ -113,30 +111,32 @@
     }
   }
 
-  .projectmain-card{
-    text-align: left;
-    border: var(--border-strong) solid var(--ink);
-    /* The right pane is 40% and had room to spare while this one overflowed. */
-    width: 36%;
-    height: 80%;
-    max-height: 750px;
-    /* Without this, overflow defaults to `visible`: the text escaped the
-       purple box onto the cream page, where color: var(--paper) made it
-       invisible rather than clipped. Long descriptions now scroll. */
-    overflow-y: auto;
-    overflow-x: hidden;
-    box-shadow: var(--shadow-hard);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    opacity: 0;
-    animation: fadeInUp 0.5s ease-out forwards;
+  /* The project's cover band, first thing in the content frame. It used to
+     be a separate purple column with a resting shadow beside the frame:
+     shorter than the page, split off by a gap, and the one lifted thing
+     that was not a click target. Now it sits in the frame like the hero
+     window on every other page, edged the same way. */
+  .project-hero{
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    align-items: start;
+    gap: var(--space-5);
+    padding: var(--space-4);
+    border: var(--border-default) solid var(--ink);
+    border-radius: var(--radius-surface);
     background-color: var(--deep);
+    color: var(--paper);
+    text-align: left;
+    /* Paper on --deep is 13.2:1. */
+    --focus-ring: var(--paper);
 
+    /* Its own row across both columns, so it stays first when the band
+       stacks and the screenshot moves up. */
     .back-link{
-      align-self: flex-start;
-      margin: var(--space-3) 0 var(--space-2) var(--space-3);
+      grid-column: 1 / -1;
+      justify-self: start;
+      border-radius: var(--radius-control);
+      margin-bottom: calc(-1 * var(--space-2));
       padding: var(--space-1) var(--space-3);
       font-size: var(--text-xs);
       letter-spacing: 0.06em;
@@ -155,46 +155,37 @@
       }
     }
 
+    /* The screenshot is the cover image: top of the page, cropped from the
+       top at the cards' ratio so a tall capture does not push the band
+       taller than the text beside it. */
+    .zoomable{
+      border: var(--border-divider) solid var(--paper);
+    }
+
     .project-image{
-      /* Source art is 1920x1361. With `width: auto` the image took the pane's
-         full width and its height followed the ratio, so widening the pane
-         made the image taller and gave the text back nothing. Fixed height
-         plus cover crops instead of scaling. */
       width: 100%;
       height: auto;
-      /* A ceiling, not a fixed height. Source ratios run from 0.38 (angelite)
-         to 0.82 (caution); a hard height would crop the wide ones to fill a
-         box they never needed. Only images tall enough to squeeze the text
-         get cropped. */
-      max-height: min(38dvh, 320px);
+      aspect-ratio: 279 / 173;
       object-fit: cover;
       object-position: top;
     }
 
-    .note{
-      font-size: var(--text-xs);
-      padding-top: var(--space-1);
-      padding-left: var(--space-1);
-      font-weight: 300;
-      color: var(--paper);
-    }
-
-    /* The page-wide thumb colour is --deep, which is this card's background. */
-    &::-webkit-scrollbar-thumb{
-      background: var(--paper);
-    }
-
-    &::-webkit-scrollbar-thumb:hover{
-      background: var(--accent);
-    }
-
+    /* Light text on the purple band gets one step more of everything:
+       regular weight, a little tracking, a little leading. */
     .project-content{
-      color: var(--paper);
-      font-weight: 300;
-      padding: var(--space-4);
       display: flex;
       flex-direction: column;
       gap: var(--space-2);
+      min-width: 0;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+
+      /* On the p, not the container: the reset sets line-height on every
+         element, so an inherited value never reaches it. Direct children
+         only, so the role pills keep their own height. */
+      > p {
+        line-height: 1.7;
+      }
 
       .project-content-role{
         display: flex;
@@ -212,7 +203,6 @@
           width: fit-content;
           font-size: var(--text-sm);
           font-weight: 500;
-          white-space: nowrap;
 
           :nth-child(1){
             background-color: var(--paper);
@@ -229,90 +219,158 @@
           display: flex;
           align-items: center;
           gap: var(--space-3);
-          animation-delay: 0.5s;
-      
+
           .social-icon {
+            display: inline-flex;
             font-size: 1.7rem;
-            transition: color 0.3s, transform 0.2s;
-      
+            transition: color var(--speed) var(--ease), transform var(--speed) var(--ease);
+
             &:hover {
               color: var(--accent);
               transform: scale(1.1);
             }
           }
         }
-
-        @media (max-width: 370px){
-          flex-direction: column;
-          gap: var(--space-2);
-        }
-        
       }
 
       h1, .border-btm{
         border-bottom: var(--border-divider) solid var(--paper);
       }
 
+      /* The pixel face has one weight; asking for 700 made the browser
+         smear a fake bold over it. One step up from the side panel: the
+         band has the width to carry it. */
       h1{
-        font-size: var(--text-2xl);
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        padding-bottom: var(--space-1);
+        font-size: var(--text-display);
+        font-weight: normal;
+        letter-spacing: 0.01em;
+        line-height: 1.1;
+        padding-bottom: var(--space-2);
+        margin-top: var(--space-1);
+      }
+
+      /* Capstone / school / client: detail under the title, not a badge. */
+      .project-context{
+        font-size: var(--text-xs);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-top: calc(-1 * var(--space-1));
       }
 
       .border-btm{
         max-width: var(--measure);
-      }
-
-      .border-btm{
         padding-bottom: var(--space-2);
       }
 
       span{
         font-weight: bold;
       }
-
     }
 
+    /* Stacked, the screenshot leads: it is the fastest read of what the
+       project is. */
     @media (max-width: 1024px) {
-      flex-direction: column;
-      gap: var(--space-2);
-      height: auto;
-      width: 70%;
-      /* The card stops being height-capped here, so the scroll container and
-         the image ceiling have to come off with it. Neither was reset before,
-         which left 769-1024px capped at 750px and scrolling inside the card. */
-      max-height: none;
-      overflow: visible;
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
 
-      .project-image{
-        max-height: none;
+      .back-link{
+        order: -2;
+        margin-bottom: 0;
       }
 
-      .social-links{
-        margin-bottom: 0 !important;
+      .zoomable{
+        order: -1;
       }
-    }
-
-    @media (max-width: 768px) {
-      width: 80%;
-      height: auto;
-      max-height: none;
-      overflow: visible;
-      border-left: var(--border-strong) solid var(--ink);
-      border-right: var(--border-strong) solid var(--ink);
     }
 
     @media (max-width: 480px) {
-      width: 90%;
-      border: var(--border-strong) solid var(--ink);
+      padding: var(--space-3);
     }
   }
 
-  .projectpage-card{
+  /* Capped: at the full frame width a 16:10 slide ran 560px tall and the
+     features outweighed the project itself. */
+  .project-page .features-section{
+    max-width: 760px;
+    margin-inline: auto;
+    padding: var(--space-2);
+  }
 
-    .features-section{
-      padding: var(--space-2);
+  .project-footer{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    margin-top: var(--space-6);
+    padding-top: var(--space-5);
+    border-top: var(--border-default) solid var(--ink);
+
+    &__pager{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+
+      @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    &__step{
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+      padding: var(--space-3) var(--space-4);
+      border: var(--border-default) solid var(--ink);
+      transition: box-shadow var(--speed) var(--ease),
+        transform var(--speed) var(--ease);
+
+      &:hover{
+        box-shadow: var(--shadow-hard);
+        transform: translate(-2px, -2px);
+      }
+
+      &:active{
+        box-shadow: none;
+        transform: translate(1px, 1px);
+      }
+    }
+
+    &__step--next{
+      text-align: right;
+    }
+
+    &__dir{
+      font-size: var(--text-xs);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-soft);
+    }
+
+    &__name{
+      font-size: var(--text-lg);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    &__cta{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+
+      p{
+        font-size: var(--text-lg);
+        font-weight: 600;
+      }
+    }
+
+    &__actions{
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
     }
   }
 }
