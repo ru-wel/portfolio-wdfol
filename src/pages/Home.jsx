@@ -35,7 +35,7 @@ const Home = () => {
                   Full-stack developer building AI and automation systems.
                 </h1>
                 <p>I&rsquo;m Reuel Christian Sundiam, and I turn manual processes into reliable automated systems. As an AI-Integrated Web Developer at The Back Room Offshoring Inc., I build n8n automations, LLM-powered internal tools, and the web apps around them.</p>
-                <p>I work across <span>React, Node/Express, PostgreSQL and Python</span>, and I graduated Summa Cum Laude in BS Information Technology from Holy Angel University in 2026.</p>
+                <p>I work across <span>React, Node.js/Express and PostgreSQL</span>, with RAG and n8n automation on Google Cloud and Docker. I graduated Summa Cum Laude in BS Information Technology from Holy Angel University in 2026.</p>
                 <div className="hero-actions">
                   <a href="/RCGS-RESUME.pdf" download className="button button--primary">
                     Download resume <Icon name="cloud-arrow-down" />

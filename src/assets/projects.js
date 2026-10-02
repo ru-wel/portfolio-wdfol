@@ -138,17 +138,17 @@ const projects = [
   {
     slug: 'mnhs-lms',
     title: 'MNHS LMS',
-    description: 'A Learning Management System (LMS) proposed for a local high school in Mexico, Pampanga.',
+    description: 'A Learning Management System (LMS) proposed for a public high school in Mexico, Pampanga.',
     description2: 'Node.js, Express.js, PostgreSQL',
-    description3: 'A Learning Management System (LMS) proposed for a local high school in Mexico, Pampanga. It aims to simplify educational management with features like user registration and login, dashboards, and administrative controls.',
+    description3: 'A Learning Management System (LMS) proposed for a public high school in Mexico, Pampanga. It aims to simplify educational management with features like user registration and login, dashboards, and administrative controls.',
     image: '/images/mnhs-login.jpeg',
     links: [
       'https://mnhs-lms.onrender.com/login',
       'https://github.com/ru-wel/mnhs-lms-mern',
     ],
     role: 'Backend',
-    client: 'High school in Mexico, Pampanga',
-    context: 'Proposed to a client',
+    client: 'Public high school in Mexico, Pampanga',
+    context: 'Built and demoed as a proposal',
     screenshots: [
       '/images/mnhs-dashboard.png',
       '/images/mnhs-admin-users.jpeg',
@@ -168,7 +168,7 @@ const projects = [
   {
     slug: 'caution-coffee',
     title: 'Caution Coffee',
-    description: 'A website created to showcase Caution Coffee, a cafe and premium supply store located in Angeles City, Philippines',
+    description: 'A website for Caution Coffee, a café and premium supply store in Angeles City, with Firebase sign-in, a shopping cart and a customer reviews page.',
     description2: 'EJS, Node.js, Express.js, Firebase',
     description3: "Caution Coffee and Supply™ is a café and premium supply store located in Angeles City, Pampanga. This website aims to showcase the shop's offerings while improving it's online presence and visibility.",
     image: '/images/caution-home.png',

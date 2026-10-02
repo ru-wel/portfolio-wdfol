@@ -44,6 +44,7 @@ const skills = [
     category: "Languages",
     skills: [
       { name: "JavaScript" },
+      { name: "TypeScript" },
       { name: "Python" },
       { name: "PHP" },
     ]
