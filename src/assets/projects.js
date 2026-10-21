@@ -75,7 +75,7 @@ const projects = [
     description3: "InternStreet is designed to connect students with internship opportunities tailored to their location and field of interest. The platform allows users to create profiles, explore internship listings, and apply directly, acting as a central hub for internships all over the Philippines.",
     image: '/images/intern-home.png',
     links: [
-      'https://internstreetph.site/',
+      'https://internstreet-cloudcom.vercel.app/',
       'https://github.com/ru-wel/internstreet-cloudcom'
     ],
     role: 'Backend',
