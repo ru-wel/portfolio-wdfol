@@ -10,7 +10,7 @@ const projects = [
     description3: 'ARISE HRIS is a full-stack Human Resource Information System developed for a construction company. The system centralizes employee records, onboarding files, leave management, project assignments, performance evaluations, audit logs, and HR analytics.',
     image: '/images/hris-dashboard.png',
     links: [
-      'https://acdc-hris.site',
+      'https://arise-hris.vercel.app/',
       'https://github.com/ru-wel/WDCAP-HRIS'
     ],
     role: 'Backend',
